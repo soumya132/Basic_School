@@ -8,14 +8,16 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: process.env.SITE_URL || 'https://saraswati-sisu-vidya-mandir.onrender.com',
   integrations: [sitemap()],
-  trailingSlash: 'always',
+  trailingSlash: 'never',
   build: {
     inlineStylesheets: 'auto',
+    format: 'file',
   },
   vite: {
     plugins: [tailwindcss()],
   },
 });
+
 
 
 
