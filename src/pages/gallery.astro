@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+import CTASection from '../components/CTASection.astro';
+import SampleNote from '../components/SampleNote.astro';
+import { images, galleryItems } from '../data/gallery';
+import { school } from '../data/school';
+---
+
+<BaseLayout
+  title="School Gallery"
+  description={`Photo gallery of ${school.name} — campus, classrooms, activities and celebrations. Currently showing illustrative photographs.`}
+>
+  <Hero
+    title="School Gallery"
+    subtitle="A glimpse of campus life — classrooms, activities, campus spaces and celebrations."
+    image={images.kidsComputer}
+    imageAlt="Children learning together on a computer (illustrative stock photograph)"
+    breadcrumbs={[{ label: 'School Gallery' }]}
+  />
+
+  <section class="section bg-white">
+    <div class="container-site">
+      <SampleNote
+        text="all photographs below are illustrative stock images of school scenes — they are NOT photographs of this school, its campus or its students. Replace them with the school's own photographs (place files in src/assets/images/ and update src/data/gallery.ts)."
+      />
+
+      <div class="mt-10">
+        <GalleryGrid items={galleryItems} showFilters={true} />
+      </div>
+
+      <p class="mt-8 text-center text-xs text-slate-500">
+        Tip: click any photograph to open the full-screen viewer. Use arrow keys to move
+        between images and <kbd class="rounded bg-slate-100 px-1.5 py-0.5">Esc</kbd> to close.
+      </p>
+    </div>
+  </section>
+
+  <CTASection
+    title="Have school photographs to share?"
+    text="Parents and staff may contact the school office about contributing photographs for the gallery, with appropriate consent."
+    primary={{ label: 'Contact the Office', href: '/contact' }}
+    secondary={{ label: 'Events & Celebrations', href: '/events' }}
+  />
+
+  <p class="sr-only">{school.name} photo gallery.</p>
+</BaseLayout>

@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import NoticeCard from '../components/NoticeCard.astro';
+import CTASection from '../components/CTASection.astro';
+import SampleNote from '../components/SampleNote.astro';
+import { images } from '../data/gallery';
+import { notices } from '../data/notices';
+import { school } from '../data/school';
+---
+
+<BaseLayout
+  title="News & Notices"
+  description={`News, circulars and notices from ${school.name} — sample entries shown for preview until official notices are published.`}
+>
+  <Hero
+    title="News & Notices"
+    subtitle="Circulars, announcements and important updates from the school office."
+    image={images.schoolCorridor}
+    imageAlt="Bright school corridor (illustrative stock photograph)"
+    breadcrumbs={[{ label: 'News & Notices' }]}
+  />
+
+  <section class="section bg-white">
+    <div class="container-site">
+      <SampleNote
+        text="every notice below is a SAMPLE entry created for design preview. They are not real school circulars. Verified notices will replace these once published by the school office."
+      />
+
+      <div class="mt-10 grid gap-4 md:grid-cols-2">
+        {notices.map((notice) => <NoticeCard notice={notice} />)}
+      </div>
+
+      <div class="mt-10 rounded-xl border border-slate-200 bg-cream p-6 text-sm leading-relaxed text-slate-600">
+        <h2 class="mb-2 text-base font-bold text-navy-800">How notices will work</h2>
+        <p>
+          This page is a simple, static list of school notices — no login or account is needed.
+          When the school publishes a verified notice, it will appear here with its date and
+          category. For urgent matters, please always contact the school office directly by
+          telephone or in person.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Need clarification on a notice?"
+    text="Please contact the school office — staff will be happy to help parents with any question."
+    primary={{ label: 'Contact the Office', href: '/contact' }}
+    secondary={{ label: 'School Information', href: '/school-information' }}
+  />
+
+  <p class="sr-only">{school.name} news and notices page.</p>
+</BaseLayout>

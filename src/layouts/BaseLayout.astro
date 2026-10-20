@@ -1,0 +1,108 @@
+---
+/**
+ * Base HTML layout: SEO metadata, Open Graph, favicon, global styles,
+ * skip-link, header/footer and a back-to-top button.
+ */
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import { school } from '../data/school';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Optional override for the canonical path (defaults to current URL). */
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+const siteUrl = Astro.site ?? new URL('https://example-school.pages.dev');
+const canonical = new URL(Astro.url.pathname, siteUrl);
+const pageTitle = title ? `${title} | ${school.name}` : school.name;
+const ogImage = new URL(image ?? '/images/og-default.jpg', siteUrl).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.toString()} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#102743" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={school.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical.toString()} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_IN" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+  </head>
+
+  <body class="flex min-h-screen flex-col">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <Header />
+
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <!-- Back to top -->
+    <button
+      type="button"
+      id="back-to-top"
+      aria-label="Back to top"
+      class="fixed right-4 bottom-4 z-40 hidden h-11 w-11 items-center justify-center rounded-full bg-navy-800 text-white shadow-lg transition-colors hover:bg-leaf-700"
+    >
+      <Icon name="arrow-up" size={20} />
+    </button>
+
+    <script>
+      const btn = document.getElementById('back-to-top');
+      if (btn) {
+        let ticking = false;
+        window.addEventListener(
+          'scroll',
+          () => {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(() => {
+              btn.classList.toggle('hidden', window.scrollY < 480);
+              btn.classList.toggle('flex', window.scrollY >= 480);
+              ticking = false;
+            });
+          },
+          { passive: true }
+        );
+        btn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    </script>
+
+    <!-- School-level structured data (name only; no invented facts) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'School',
+      name: school.name,
+      description: school.tagline,
+      url: canonical.toString(),
+      logo: new URL('/favicon.svg', siteUrl).toString(),
+    })} />
+  </body>
+</html>

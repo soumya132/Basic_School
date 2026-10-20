@@ -1,0 +1,51 @@
+---
+/** Feature card with icon, title, text and optional link. */
+import Icon from './Icon.astro';
+import type { IconName } from '../types';
+
+interface Props {
+  icon: IconName;
+  title: string;
+  text: string;
+  href?: string;
+  linkLabel?: string;
+  tone?: 'navy' | 'green' | 'gold';
+}
+
+const { icon, title, text, href, linkLabel = 'Learn more', tone = 'navy' } = Astro.props;
+
+const toneClasses = {
+  navy: 'bg-navy-50 text-navy-700',
+  green: 'bg-leaf-50 text-leaf-700',
+  gold: 'bg-gold-100 text-gold-600',
+} as const;
+
+const Wrapper = href ? 'a' : 'div';
+---
+
+<Wrapper
+  {...href ? { href } : {}}
+  class:list={[
+    'group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all',
+    href && 'hover:-translate-y-1 hover:border-leaf-100 hover:shadow-lg',
+  ]}
+>
+  <span
+    class:list={[
+      'mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg',
+      toneClasses[tone],
+    ]}
+  >
+    <Icon name={icon} size={24} />
+  </span>
+  <h3 class="mb-2 text-lg font-bold text-navy-800">{title}</h3>
+  <p class="mb-4 flex-1 text-sm leading-relaxed text-slate-600">{text}</p>
+  {
+    href && (
+      <span class="inline-flex items-center gap-1 text-sm font-semibold text-leaf-700 group-hover:underline">
+        {linkLabel}
+        <Icon name="arrow-right" size={15} />
+      </span>
+    )
+  }
+</Wrapper>

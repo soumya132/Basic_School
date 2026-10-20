@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+import CTASection from '../components/CTASection.astro';
+import Icon from '../components/Icon.astro';
+import Icon from '../components/Icon.astro';
+import { images } from '../data/gallery';
+import { school } from '../data/school';
+
+const faqs = [
+  {
+    q: 'How do I contact the school office?',
+    a: 'Please use the telephone number or email address shown above. Office hours are listed in the contact details — [confirm with the school].',
+  },
+  {
+    q: 'Can I visit the campus?',
+    a: 'Parents are generally welcome to visit by prior appointment. Please call the office to confirm a suitable time. [Confirm the school’s visitor policy]',
+  },
+  {
+    q: 'Where can I find admission information?',
+    a: 'This website does not process admissions. Please contact the school office directly for admission enquiries, age criteria and documentation requirements.',
+  },
+  {
+    q: 'How will I receive school notices?',
+    a: 'Verified notices are published on the News & Notices page of this website and may also be shared directly with parents. [Confirm the school’s communication method]',
+  },
+];
+---
+
+<BaseLayout
+  title="Contact Us"
+  description={`Contact ${school.name} — school office address, telephone, email and office hours. Visit or call the office for enquiries.`}
+>
+  <Hero
+    title="Contact Us"
+    subtitle="We would be glad to hear from you. Reach the school office by phone, email or a campus visit."
+    image={images.schoolBuilding}
+    imageAlt="School building exterior (illustrative stock photograph)"
+    breadcrumbs={[{ label: 'Contact Us' }]}
+  />
+
+  <section class="section bg-white">
+    <div class="container-site grid gap-10 lg:grid-cols-2">
+      <div>
+        <ContactBlock />
+
+        {
+          school.address.mapAvailable && school.address.mapEmbedUrl && (
+            <div class="mt-8 overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
+              <iframe
+                src={school.address.mapEmbedUrl}
+                title={`Map showing the location of ${school.name}`}
+                class="h-80 w-full"
+                style="border:0"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen
+              />
+            </div>
+          )
+        }
+        {
+          !school.address.mapAvailable && (
+            <div class="mt-8 flex items-start gap-3 rounded-xl border-2 border-dashed border-navy-200 bg-cream p-6">
+              <Icon name="map-pin" size={22} class="mt-0.5 shrink-0 text-navy-400" />
+              <div>
+                <h2 class="text-base font-bold text-navy-800">Map</h2>
+                <p class="mt-1 text-sm text-slate-600">
+                  A location map will appear here once the school's verified address and map
+                  embed are added in{' '}
+                  <code class="rounded bg-cream-dark px-1 py-0.5 text-xs">src/data/school.ts</code>
+                  .
+                </p>
+              </div>
+            </div>
+          )
+        }
+      </div>
+
+      <div>
+        <h2 class="mb-4 text-xl font-bold text-navy-800">Frequently asked questions</h2>
+        <div class="space-y-3">
+          {
+            faqs.map((f) => (
+              <details class="group rounded-xl border border-slate-200 bg-white p-5 shadow-sm open:border-leaf-100">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm font-bold text-navy-800">
+                  {f.q}
+                  <Icon
+                    name="chevron-down"
+                    size={16}
+                    class="shrink-0 text-leaf-700 transition-transform group-open:rotate-180"
+                  />
+                </summary>
+                <p class="mt-3 text-sm leading-relaxed text-slate-600">{f.a}</p>
+              </details>
+            ))
+          }
+        </div>
+
+        <div class="mt-8 rounded-xl border border-gold-200 bg-gold-100/60 p-6">
+          <h2 class="text-base font-bold text-gold-600">A note on contact details</h2>
+          <p class="mt-2 text-sm leading-relaxed text-gold-600">
+            All address, telephone and email details on this website are currently
+            <strong> placeholders</strong>. They must be replaced with verified information in
+            <code class="rounded bg-white/60 px-1 py-0.5 text-xs">src/data/school.ts</code>
+            before the site is shared publicly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Learn more about the school"
+    text="Read about our vision, academics and the people who make our school what it is."
+    primary={{ label: 'About Us', href: '/about' }}
+    secondary={{ label: 'Faculty & Staff', href: '/faculty' }}
+  />
+
+  <p class="sr-only">{school.name} contact page.</p>
+</BaseLayout>

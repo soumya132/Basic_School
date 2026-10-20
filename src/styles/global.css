@@ -1,0 +1,147 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   Design tokens for Saraswato Sisu Vidya Mandir
+   Navy + green + white with a warm gold accent (Indian school style)
+------------------------------------------------------------------- */
+@theme {
+  --color-navy-50: #eef3f9;
+  --color-navy-100: #d8e4f0;
+  --color-navy-200: #b3c8e0;
+  --color-navy-300: #7f9fc6;
+  --color-navy-400: #4d74a5;
+  --color-navy-500: #2f5580;
+  --color-navy-600: #1e4068;
+  --color-navy-700: #163255;
+  --color-navy-800: #102743;
+  --color-navy-900: #0b1d36;
+
+  --color-leaf-50: #edf7f1;
+  --color-leaf-100: #d5ecdd;
+  --color-leaf-500: #2a8f56;
+  --color-leaf-600: #1f7a46;
+  --color-leaf-700: #186238;
+  --color-leaf-800: #124d2c;
+
+  --color-gold-100: #faf0d8;
+  --color-gold-200: #f3dfab;
+  --color-gold-400: #e3b24a;
+  --color-gold-500: #d29a27;
+  --color-gold-600: #b07e18;
+
+  --color-cream: #faf7f0;
+  --color-cream-dark: #f1ebdd;
+
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif;
+  --font-serif: 'Georgia', 'Cambria', 'Times New Roman', serif;
+}
+
+/* Base ---------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  @apply bg-white font-sans text-slate-700 antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply font-serif text-navy-800;
+}
+
+/* Focus visibility for keyboard users ---------------------------------- */
+:where(a, button, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-gold-500);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Skip link ------------------------------------------------------------ */
+.skip-link {
+  @apply absolute -top-12 left-4 z-[100] rounded-b-md bg-navy-800 px-4 py-2 text-sm font-semibold text-white transition-all;
+}
+.skip-link:focus {
+  @apply top-0;
+}
+
+/* Layout helpers ------------------------------------------------------- */
+.container-site {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+}
+
+.section {
+  @apply py-14 sm:py-18 lg:py-22;
+}
+
+/* Prose-ish content blocks --------------------------------------------- */
+.prose-school {
+  @apply space-y-4 text-base leading-relaxed text-slate-600;
+}
+.prose-school h2 {
+  @apply mt-8 mb-3 text-2xl font-bold;
+}
+.prose-school h3 {
+  @apply mt-6 mb-2 text-xl font-bold;
+}
+.prose-school ul {
+  @apply list-disc space-y-2 pl-6;
+}
+.prose-school strong {
+  @apply text-navy-800;
+}
+
+/* Decorative underline for section headings ---------------------------- */
+.heading-accent {
+  @apply relative pb-3;
+}
+.heading-accent::after {
+  content: '';
+  @apply absolute bottom-0 left-0 h-1 w-16 rounded-full bg-gold-400;
+}
+.heading-accent-center {
+  @apply text-center;
+}
+.heading-accent-center::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Details-based dropdown (works without JS) ---------------------------- */
+.nav-dropdown > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.nav-dropdown > summary::-webkit-details-marker {
+  display: none;
+}
+.nav-dropdown[open] > summary .nav-caret {
+  transform: rotate(180deg);
+}
+
+/* Sample-content badge -------------------------------------------------- */
+.sample-badge {
+  @apply inline-flex items-center gap-1 rounded-full bg-gold-100 px-3 py-1 text-xs font-semibold tracking-wide text-gold-600 uppercase;
+}
+
+/* Placeholder text style (unverified school facts) ---------------------- */
+.placeholder-text {
+  @apply rounded bg-gold-100 px-1.5 py-0.5 font-medium text-gold-600;
+}

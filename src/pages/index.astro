@@ -1,0 +1,335 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import NoticeCard from '../components/NoticeCard.astro';
+import EventCard from '../components/EventCard.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+import CTASection from '../components/CTASection.astro';
+import SampleNote from '../components/SampleNote.astro';
+import { images, galleryItems } from '../data/gallery';
+import { notices } from '../data/notices';
+import { events } from '../data/events';
+import { school } from '../data/school';
+
+const latestNotices = notices.slice(0, 3);
+const upcomingEvents = events.slice(0, 3);
+const previewImages = galleryItems.slice(0, 8);
+---
+
+<BaseLayout
+  title="Home"
+  description={`${school.name} — a welcoming school website for parents and the community. ${school.tagline}. Find academics, facilities, notices, gallery and contact information.`}
+>
+  <Hero
+    variant="home"
+    title={`Welcome to ${school.name}`}
+    subtitle={school.tagline}
+    image={images.heroClassroom}
+    imageAlt="Young students taking part in a classroom activity (illustrative stock photograph)"
+    primaryCta={{ label: 'Explore Academics', href: '/academics' }}
+    secondaryCta={{ label: 'Contact the School', href: '/contact' }}
+  />
+
+  <!-- Introduction -->
+  <section class="section bg-white">
+    <div class="container-site grid items-center gap-10 lg:grid-cols-2">
+      <div>
+        <SectionHeading
+          eyebrow="About our school"
+          title="A caring place to learn, grow and belong"
+          subtitle={`At ${school.name}, children are encouraged to ask questions, build strong foundations and grow into confident, kind individuals.`}
+        />
+        <div class="prose-school">
+          <p>
+            Our website is a simple information resource for parents and the local community.
+            It introduces the school's approach to learning, the people who make the campus
+            lively each day, and the activities that shape a well-rounded childhood.
+          </p>
+          <p>
+            We believe every child deserves a safe, cheerful classroom; patient teachers;
+            time to play; and the steady encouragement of families and educators working
+            together.
+          </p>
+        </div>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a
+            href="/about"
+            class="rounded-md bg-navy-800 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-navy-700"
+            >More About Us</a
+          >
+          <a
+            href="/vision-mission"
+            class="rounded-md border-2 border-navy-200 px-5 py-2.5 text-sm font-bold text-navy-800 transition-colors hover:border-navy-800"
+            >Vision & Mission</a
+          >
+        </div>
+      </div>
+
+      <div class="relative">
+        <img
+          src={images.schoolBuilding.src}
+          alt="School building with green lawns (illustrative stock photograph)"
+          width={images.schoolBuilding.width}
+          height={images.schoolBuilding.height}
+          loading="lazy"
+          decoding="async"
+          class="aspect-[4/3] w-full rounded-2xl object-cover shadow-xl"
+        />
+        <div
+          class="absolute -bottom-6 -left-4 max-w-[240px] rounded-xl bg-leaf-700 p-5 text-white shadow-lg sm:-left-8"
+        >
+          <p class="font-serif text-lg font-bold">Learn · Grow · Shine</p>
+          <p class="mt-1 text-sm text-leaf-50">
+            Our simple motto for everyday learning — [confirm official motto with the school].
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Educational highlights -->
+  <section class="section bg-cream">
+    <div class="container-site">
+      <SectionHeading
+        align="center"
+        eyebrow="Why families choose us"
+        title="Educational highlights"
+        subtitle="A balanced mix of strong academics, values, creativity and play — described here in general terms for families exploring the school."
+      />
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <FeatureCard
+          icon="graduation-cap"
+          title="Strong foundations"
+          text="Careful attention to reading, writing and number skills in the early years, with patient practice and plenty of encouragement."
+          href="/academics"
+        />
+        <FeatureCard
+          icon="heart"
+          title="Values & character"
+          text="Daily habits of kindness, honesty, respect and responsibility are woven into school life alongside classroom learning."
+          href="/vision-mission"
+          tone="green"
+        />
+        <FeatureCard
+          icon="palette"
+          title="Creative expression"
+          text="Art, music, dance and stage activities give every child a chance to express themselves and shine with confidence."
+          href="/sports-activities"
+          tone="gold"
+        />
+        <FeatureCard
+          icon="trophy"
+          title="Sports & play"
+          text="Outdoor games and physical education support healthy bodies, team spirit and joyful energy through the day."
+          href="/sports-activities"
+        />
+        <FeatureCard
+          icon="book"
+          title="Reading culture"
+          text="Story time, a school library and reading habits help children discover worlds beyond the classroom."
+          href="/facilities"
+          tone="green"
+        />
+        <FeatureCard
+          icon="users"
+          title="Parent partnership"
+          text="We welcome regular communication with families through meetings, notices and everyday conversation."
+          href="/contact"
+          tone="gold"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Facilities preview -->
+  <section class="section bg-white">
+    <div class="container-site grid items-center gap-10 lg:grid-cols-2">
+      <div class="order-2 lg:order-1">
+        <SectionHeading
+          eyebrow="Our campus"
+          title="Facilities that support learning"
+          subtitle="Bright classrooms, a reading library, activity spaces and safe play areas are the backbone of a good school day."
+        />
+        <ul class="mb-6 space-y-3">
+          {
+            [
+              'Well-lit, ventilated classrooms',
+              'Library with age-appropriate books',
+              'Playground for games and sports',
+              'Safe drinking water and clean sanitation',
+              'Activity rooms for art, music and culture',
+            ].map((f) => (
+              <li class="flex items-start gap-2.5 text-slate-600">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="mt-0.5 shrink-0 text-leaf-600"
+                  aria-hidden="true"
+                >
+                  <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+                  <path d="m9 11 3 3L22 4" />
+                </svg>
+                {f}
+              </li>
+            ))
+          }
+        </ul>
+        <SampleNote compact text="facility list is an example to preview the page — confirm each facility with the school." />
+        <a
+          href="/facilities"
+          class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-leaf-700 hover:underline"
+        >
+          View all facilities
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+      <div class="order-1 grid grid-cols-2 gap-4 lg:order-2">
+        <img
+          src={images.classroomColorful.src}
+          alt="Colourful primary classroom (illustrative stock photograph)"
+          width={images.classroomColorful.width}
+          height={images.classroomColorful.height}
+          loading="lazy"
+          decoding="async"
+          class="aspect-square w-full rounded-xl object-cover shadow-md"
+        />
+        <img
+          src={images.library.src}
+          alt="Library bookshelves (illustrative stock photograph)"
+          width={images.library.width}
+          height={images.library.height}
+          loading="lazy"
+          decoding="async"
+          class="mt-8 aspect-square w-full rounded-xl object-cover shadow-md"
+        />
+        <img
+          src={images.playground.src}
+          alt="Children's playground (illustrative stock photograph)"
+          width={images.playground.width}
+          height={images.playground.height}
+          loading="lazy"
+          decoding="async"
+          class="aspect-square w-full rounded-xl object-cover shadow-md"
+        />
+        <img
+          src={images.scienceLab.src}
+          alt="Science laboratory glassware (illustrative stock photograph)"
+          width={images.scienceLab.width}
+          height={images.scienceLab.height}
+          loading="lazy"
+          decoding="async"
+          class="mt-8 aspect-square w-full rounded-xl object-cover shadow-md"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Notices preview -->
+  <section class="section bg-cream">
+    <div class="container-site">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <SectionHeading
+          eyebrow="Stay updated"
+          title="Latest notices"
+          subtitle="Circulars and announcements from the school office will appear here."
+        />
+        <a
+          href="/notices"
+          class="mb-10 inline-flex items-center gap-1.5 text-sm font-bold text-leaf-700 hover:underline"
+        >
+          All notices
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {latestNotices.map((notice) => <NoticeCard notice={notice} />)}
+      </div>
+      <p class="mt-4 text-xs text-slate-500">
+        All notices currently shown are clearly marked sample entries for design preview.
+      </p>
+    </div>
+  </section>
+
+  <!-- Events preview -->
+  <section class="section bg-white">
+    <div class="container-site">
+      <SectionHeading
+        align="center"
+        eyebrow="School calendar"
+        title="Events & celebrations"
+        subtitle="From annual day to sports day, school life is full of shared moments. These are illustrative examples of events."
+      />
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {upcomingEvents.map((event) => <EventCard event={event} />)}
+      </div>
+      <div class="mt-8 text-center">
+        <a
+          href="/events"
+          class="inline-flex rounded-md bg-navy-800 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-navy-700"
+        >
+          View all events
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery preview -->
+  <section class="section bg-cream">
+    <div class="container-site">
+      <SectionHeading
+        align="center"
+        eyebrow="Moments from school life"
+        title="Photo gallery"
+        subtitle="Illustrative photographs of classrooms, campus, activities and celebrations."
+      />
+      <GalleryGrid items={previewImages} showFilters={false} />
+      <div class="mt-8 text-center">
+        <a
+          href="/gallery"
+          class="inline-flex rounded-md bg-navy-800 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-navy-700"
+        >
+          Open full gallery
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>

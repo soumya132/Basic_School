@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CTASection from '../components/CTASection.astro';
+import SampleNote from '../components/SampleNote.astro';
+import Icon from '../components/Icon.astro';
+import { images } from '../data/gallery';
+import { achievements } from '../data/achievements';
+import { school } from '../data/school';
+
+const categoryIcons = {
+  Academic: 'graduation-cap',
+  Sports: 'trophy',
+  Cultural: 'music',
+  Community: 'users',
+} as const;
+---
+
+<BaseLayout
+  title="Achievements"
+  description={`Achievements of ${school.name} — a dedicated space for verified academic, sports and extracurricular accomplishments.`}
+>
+  <Hero
+    title="Achievements"
+    subtitle="A place to celebrate the effort, talent and success of our learners and staff."
+    image={images.assembly}
+    imageAlt="Students gathered in an assembly hall (illustrative stock photograph)"
+    breadcrumbs={[{ label: 'Achievements' }]}
+  />
+
+  <section class="section bg-white">
+    <div class="container-site">
+      <SampleNote
+        text="NO awards, ranks, medals or examination results have been invented for this page. Every entry below is an editable PLACEHOLDER. The school should add only verified, documented achievements."
+      />
+
+      <!-- Achievement counters (placeholders, not fake statistics) -->
+      <div class="mt-10 grid gap-4 sm:grid-cols-3">
+        {
+          [
+            { label: 'Academic achievements', hint: '[Add verified count]' },
+            { label: 'Sports achievements', hint: '[Add verified count]' },
+            { label: 'Cultural recognitions', hint: '[Add verified count]' },
+          ].map((s) => (
+            <div class="rounded-xl border-2 border-dashed border-navy-200 bg-cream p-6 text-center">
+              <p class="font-serif text-2xl font-bold text-navy-300">{s.hint}</p>
+              <p class="mt-1 text-sm font-semibold text-slate-600">{s.label}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {
+          achievements.map((a) => (
+            <article class="flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+              <div class="mb-4 flex items-center justify-between">
+                <span class="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-gold-100 text-gold-600">
+                  <Icon name={categoryIcons[a.category]} size={22} />
+                </span>
+                <span class="placeholder-text text-[11px]">{a.year}</span>
+              </div>
+              <p class="mb-1 text-xs font-bold tracking-wider text-leaf-700 uppercase">
+                {a.category}
+              </p>
+              <h2 class="mb-2 text-base font-bold text-navy-800">{a.title}</h2>
+              <p class="flex-1 text-sm leading-relaxed text-slate-600">{a.description}</p>
+              <p class="mt-4 border-t border-slate-100 pt-3 text-[11px] font-semibold text-gold-600 uppercase">
+                Placeholder entry
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container-site grid items-center gap-10 lg:grid-cols-2">
+      <div class="prose-school">
+        <SectionHeading
+          eyebrow="Our definition of success"
+          title="Effort counts, too"
+        />
+        <p>
+          Schools rightly celebrate wins — but the quieter achievements matter just as much: a
+          shy child who speaks on stage for the first time, a class that improves its reading
+          together, a learner who masters a concept after many tries. This page can hold all of
+          these stories once the school begins sharing them.
+        </p>
+        <p>
+          When adding achievements, please include the organiser's name, the date and a short
+          verified description — so that every entry stands on documented fact.
+        </p>
+      </div>
+      <img
+        src={images.sportsKids.src}
+        alt="Children playing on a sports field (illustrative stock photograph)"
+        width={images.sportsKids.width}
+        height={images.sportsKids.height}
+        loading="lazy"
+        decoding="async"
+        class="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
+      />
+    </div>
+  </section>
+
+  <CTASection
+    title="Share an achievement with us"
+    text="Parents and staff can inform the school office about verified achievements worth celebrating on this page."
+    primary={{ label: 'Contact the Office', href: '/contact' }}
+    secondary={{ label: 'Events & Celebrations', href: '/events' }}
+  />
+
+  <p class="sr-only">{school.name} achievements page.</p>
+</BaseLayout>

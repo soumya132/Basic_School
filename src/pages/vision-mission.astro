@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import CTASection from '../components/CTASection.astro';
+import SampleNote from '../components/SampleNote.astro';
+import { images } from '../data/gallery';
+import { school } from '../data/school';
+
+---
+
+<BaseLayout
+  title="Vision & Mission"
+  description={`The vision, mission and core values of ${school.name} — our approach to nurturing young learners with care, character and knowledge.`}
+>
+  <Hero
+    title="Vision & Mission"
+    subtitle="The purpose behind everything we do at our school."
+    image={images.studentLearning}
+    imageAlt="A young student working at a chalkboard (illustrative stock photograph)"
+    breadcrumbs={[{ label: 'Vision & Mission' }]}
+  />
+
+  <!-- Vision -->
+  <section class="section bg-white">
+    <div class="container-site grid items-center gap-10 lg:grid-cols-2">
+      <div>
+        <SectionHeading eyebrow="Our vision" title="Every child ready for tomorrow" />
+        <SampleNote
+          compact
+          text="the vision and mission statements below are sample copy. Replace them with the school's official wording once approved."
+        />
+        <div class="prose-school mt-6">
+          <p>
+            We envision a school where every child — regardless of background — feels welcomed,
+            supported and inspired to learn. A place where strong values and sound learning go
+            hand in hand, and where children leave each year a little more confident, a little
+            more curious and a little more ready for the world ahead.
+          </p>
+        </div>
+      </div>
+      <div class="rounded-2xl bg-navy-800 p-8 text-white sm:p-10">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="mb-5 text-gold-400"
+          aria-hidden="true"
+        >
+          <path
+            d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+          ></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+        <h2 class="text-2xl font-bold text-white">Our Vision</h2>
+        <p class="mt-4 leading-relaxed text-navy-100">
+          To nurture young learners into confident, knowledgeable and kind individuals who love
+          learning, respect others and are ready to contribute positively to society.
+        </p>
+        <p class="mt-4 border-t border-navy-600 pt-4 text-sm text-navy-200">
+          Statement shown is sample copy — update with the school's official vision statement.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="section bg-cream">
+    <div class="container-site grid items-center gap-10 lg:grid-cols-2">
+      <div class="order-2 rounded-2xl bg-leaf-700 p-8 text-white sm:order-1 sm:p-10">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="mb-5 text-gold-200"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="10"></circle>
+          <circle cx="12" cy="12" r="6"></circle>
+          <circle cx="12" cy="12" r="2"></circle>
+        </svg>
+        <h2 class="text-2xl font-bold text-white">Our Mission</h2>
+        <p class="mt-4 leading-relaxed text-leaf-50">
+          To provide a safe, caring and stimulating environment in which young children build
+          strong academic foundations, develop good character and discover the joy of learning —
+          in partnership with their families.
+        </p>
+        <p class="mt-4 border-t border-leaf-600 pt-4 text-sm text-leaf-100">
+          Statement shown is sample copy — update with the school's official mission statement.
+        </p>
+      </div>
+      <div class="order-1 sm:order-2">
+        <SectionHeading
+          eyebrow="Our mission"
+          title="How we put our purpose into practice"
+        />
+        <div class="prose-school">
+          <p>
+            A mission statement matters only when it changes everyday practice. Ours guides how
+            we plan lessons, how teachers engage with children, how the campus is organised and
+            how we work with parents.
+          </p>
+          <ul>
+            <li>Teaching with clarity, patience and genuine care for each learner.</li>
+            <li>Keeping the campus safe, clean and welcoming for every child.</li>
+            <li>Balancing academics with sports, arts and cultural activities.</li>
+            <li>Maintaining open, respectful communication with families.</li>
+            <li>Helping children build habits of honesty, effort and responsibility.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section bg-white">
+    <div class="container-site">
+      <SectionHeading
+        align="center"
+        eyebrow="Our core values"
+        title="Values we live every day"
+        subtitle="These six values are the foundation of how children learn and how our school community works together."
+      />
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <FeatureCard icon="heart" title="Care" text="Every child is known, welcomed and looked after as an individual." tone="green" />
+        <FeatureCard icon="shield" title="Integrity" text="Doing the right thing — even when no one is watching." tone="navy" />
+        <FeatureCard icon="sparkles" title="Curiosity" text="Asking questions, exploring ideas and finding joy in discovery." tone="gold" />
+        <FeatureCard icon="users" title="Respect" text="Treating teachers, classmates and elders with courtesy and kindness." tone="navy" />
+        <FeatureCard icon="target" title="Effort" text="Trying again after mistakes and giving our best in every task." tone="green" />
+        <FeatureCard icon="leaf" title="Responsibility" text="Caring for our books, our campus, our time and one another." tone="gold" />
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="See our vision at work"
+    text="Explore how our philosophy shapes academics, activities and everyday classroom life."
+    primary={{ label: 'Our Academics', href: '/academics' }}
+    secondary={{ label: 'Sports & Activities', href: '/sports-activities' }}
+  />
+
+  <p class="sr-only">{school.name} — vision, mission and values.</p>
+</BaseLayout>

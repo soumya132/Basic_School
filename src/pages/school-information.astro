@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import CTASection from '../components/CTASection.astro';
+import SampleNote from '../components/SampleNote.astro';
+import Icon from '../components/Icon.astro';
+import { images } from '../data/gallery';
+import { school } from '../data/school';
+
+const policyLinks = [
+  { label: 'Admissions Policy', file: '[Add document / link]', status: 'To be added' },
+  { label: 'Fee Structure', file: '[Add document / link]', status: 'To be added' },
+  { label: 'School Rules & Discipline Policy', file: '[Add document / link]', status: 'To be added' },
+  { label: 'Anti-Ragging / Child Safety Guidelines', file: '[Add document / link]', status: 'To be added' },
+  { label: 'Transport Policy', file: '[Add document / link]', status: 'To be added' },
+  { label: 'Right to Information / Public Disclosure', file: '[Add document / link]', status: 'To be added' },
+];
+---
+
+<BaseLayout
+  title="School Information & Policies"
+  description={`Official school details, affiliation information and policy documents for ${school.name}. All unverified details are clearly marked as placeholders.`}
+>
+  <Hero
+    title="School Information & Policies"
+    subtitle="Key school details, official information and links to policies and documents."
+    image={images.schoolCorridor}
+    imageAlt="School corridor (illustrative stock photograph)"
+    breadcrumbs={[{ label: 'School Information' }]}
+  />
+
+  <section class="section bg-white">
+    <div class="container-site">
+      <SampleNote
+        text="this page lists editable placeholder details only. Do NOT publish any affiliation, recognition number, certificate or statutory disclosure unless the school provides verified documents. Replace all [bracketed] values with confirmed information."
+      />
+
+      <div class="mt-10 grid gap-8 lg:grid-cols-2">
+        <!-- Basic details -->
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+          <h2 class="mb-6 text-xl font-bold text-navy-800">Basic School Information</h2>
+          <dl class="space-y-4">
+            {
+              [
+                { label: 'School Name', value: school.name },
+                { label: 'Year of Establishment', value: school.establishedYear },
+                { label: 'Affiliation / Board', value: school.affiliation },
+                { label: 'Registration / Recognition Number', value: school.registrationNumber },
+                { label: 'Principal', value: `${school.principalName} — ${school.principalTitle}` },
+                { label: 'Medium of Instruction', value: '[Add medium of instruction]' },
+                { label: 'School Type', value: '[Add school type, e.g. Co-educational]' },
+                { label: 'Classes Offered', value: '[Add classes offered, e.g. Pre-Primary to Class V]' },
+              ].map((item) => (
+                <div class="flex flex-col gap-1 sm:flex-row sm:justify-between">
+                  <dt class="text-sm font-semibold text-slate-500">{item.label}</dt>
+                  <dd class="text-sm font-medium text-navy-800 sm:text-right">
+                    {item.value.startsWith('[') ? (
+                      <span class="placeholder-text text-xs">{item.value}</span>
+                    ) : (
+                      item.value
+                    )}
+                  </dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+
+        <!-- Contact & location -->
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+          <h2 class="mb-6 text-xl font-bold text-navy-800">Location & Contact</h2>
+          <dl class="space-y-4">
+            {
+              [
+                { label: 'Address', value: `${school.address.line1}, ${school.address.line2}, ${school.address.city}, ${school.address.state} — ${school.address.pincode}` },
+                { label: 'Telephone', value: school.phone },
+                { label: 'Alternate Phone', value: school.alternatePhone },
+                { label: 'Email', value: school.email },
+                { label: 'Working Days', value: school.officeDays },
+                { label: 'Office Hours', value: school.officeHours },
+              ].map((item) => (
+                <div class="flex flex-col gap-1 sm:flex-row sm:justify-between">
+                  <dt class="text-sm font-semibold text-slate-500">{item.label}</dt>
+                  <dd class="text-sm font-medium text-navy-800 sm:text-right">
+                    {item.value.startsWith('[') ? (
+                      <span class="placeholder-text text-xs">{item.value}</span>
+                    ) : (
+                      item.value
+                    )}
+                  </dd>
+                </div>
+              ))
+            }
+          </dl>
+          <p class="mt-6 text-xs leading-relaxed text-slate-500">
+            All contact details shown are placeholders. Update{' '}
+            <code class="rounded bg-slate-100 px-1 py-0.5">src/data/school.ts</code> with
+            verified details.
+          </p>
+        </div>
+      </div>
+
+      <!-- Policies & documents -->
+      <div class="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+        <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h2 class="text-xl font-bold text-navy-800">Policies & Documents</h2>
+            <p class="mt-1 text-sm text-slate-600">
+              Add verified policy documents here when available. Links below are placeholders.
+            </p>
+          </div>
+          <span class="sample-badge">Placeholders</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-slate-200 text-left">
+                <th class="pb-3 font-semibold text-navy-800">Document</th>
+                <th class="pb-3 font-semibold text-navy-800">Status</th>
+                <th class="pb-3 text-right font-semibold text-navy-800">Link</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              {
+                policyLinks.map((p) => (
+                  <tr>
+                    <td class="py-3.5 pr-4 text-slate-600">{p.label}</td>
+                    <td class="py-3.5 pr-4">
+                      <span class="rounded-full bg-gold-100 px-2.5 py-0.5 text-[11px] font-semibold text-gold-600">
+                        {p.status}
+                      </span>
+                    </td>
+                    <td class="py-3.5 text-right">
+                      <span class="placeholder-text text-xs">{p.file}</span>
+                    </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-6 flex items-start gap-3 rounded-lg bg-cream p-4 text-xs leading-relaxed text-slate-600">
+          <Icon name="alert-triangle" size={16} class="mt-0.5 shrink-0 text-gold-600" />
+          <p>
+            <strong class="text-gold-600">Important:</strong> Do not fabricate board
+            affiliation, school code, recognition certificates or public-disclosure numbers.
+            Only publish these details if the school provides official documentation for
+            verification.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Need a specific document?"
+    text="Please contact the school office directly to request verified copies of any document."
+    primary={{ label: 'Contact the Office', href: '/contact' }}
+    secondary={{ label: 'News & Notices', href: '/notices' }}
+  />
+
+  <p class="sr-only">{school.name} school information and policies page.</p>
+</BaseLayout>

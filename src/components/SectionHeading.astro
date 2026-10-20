@@ -1,0 +1,24 @@
+---
+/** Section heading with gold accent bar. */
+interface Props {
+  title: string;
+  subtitle?: string;
+  align?: 'left' | 'center';
+  eyebrow?: string;
+  level?: 'h1' | 'h2' | 'h3';
+}
+
+const { title, subtitle, align = 'left', eyebrow, level = 'h2' } = Astro.props;
+const Tag = level;
+const alignClass = align === 'center' ? 'heading-accent-center' : '';
+---
+
+<div class:list={['mb-10 max-w-3xl', align === 'center' && 'mx-auto text-center']}>
+  {
+    eyebrow && (
+      <p class="mb-2 text-xs font-bold tracking-[0.2em] text-leaf-600 uppercase">{eyebrow}</p>
+    )
+  }
+  <Tag class:list={['heading-accent text-2xl font-bold sm:text-3xl', alignClass]}>{title}</Tag>
+  {subtitle && <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">{subtitle}</p>}
+</div>

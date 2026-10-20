@@ -1,0 +1,51 @@
+---
+/** Breadcrumb trail with schema.org BreadcrumbList JSON-LD. */
+import Icon from './Icon.astro';
+
+interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: Crumb[];
+}
+
+const { items } = Astro.props;
+const site = Astro.site?.toString().replace(/\/$/, '') ?? '';
+const crumbs = [{ label: 'Home', href: '/' }, ...items];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: crumbs.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.label,
+    ...(c.href ? { item: `${site}${c.href}` } : {}),
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+<nav aria-label="Breadcrumb" class="mb-6 text-sm text-navy-200">
+  <ol class="flex flex-wrap items-center gap-1.5">
+    {
+      crumbs.map((c, i) => (
+        <li class="flex items-center gap-1.5">
+          {i > 0 && <Icon name="chevron-down" size={12} class="-rotate-90 text-navy-400" />}
+          {c.href && i < crumbs.length - 1 ? (
+            <a href={c.href} class="font-medium hover:text-gold-200 hover:underline">
+              {c.label}
+            </a>
+          ) : (
+            <span aria-current="page" class="font-semibold text-white">
+              {c.label}
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>

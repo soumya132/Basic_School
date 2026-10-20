@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import CTASection from '../components/CTASection.astro';
+import SampleNote from '../components/SampleNote.astro';
+import { images } from '../data/gallery';
+import { school } from '../data/school';
+
+const subjects = [
+  {
+    icon: 'book' as const,
+    title: 'Languages',
+    text: 'Reading, writing, listening and speaking skills in the school’s languages. [Confirm the medium of instruction and language subjects with the school.]',
+  },
+  {
+    icon: 'target' as const,
+    title: 'Mathematics',
+    text: 'Number sense, operations, measurement and problem solving — taught with concrete material before abstract work.',
+  },
+  {
+    icon: 'leaf' as const,
+    title: 'Environmental Studies / Science',
+    text: 'Understanding family, community, plants, animals, water, food and the world around us through observation and simple experiments.',
+  },
+  {
+    icon: 'palette' as const,
+    title: 'Art & Craft',
+    text: 'Drawing, colouring, clay work and simple craft that build fine motor skills and creative confidence.',
+  },
+  {
+    icon: 'music' as const,
+    title: 'Music & Performing Arts',
+    text: 'Songs, rhymes, rhythm, dance and stage activities that give children a chance to perform and express themselves.',
+  },
+  {
+    icon: 'trophy' as const,
+    title: 'Physical Education',
+    text: 'Games, races, exercise and outdoor play that develop fitness, coordination and team spirit.',
+  },
+  {
+    icon: 'heart' as const,
+    title: 'Values & Life Skills',
+    text: 'Everyday lessons in good habits, safety, kindness, honesty and responsibility — modelled and practised throughout the school day.',
+  },
+  {
+    icon: 'computer' as const,
+    title: 'Computer Awareness',
+    text: 'Basic computer familiarity for older learners, if the school provides a computer or digital-learning facility. [Confirm availability]',
+  },
+];
+
+const approach = [
+  {
+    icon: 'graduation-cap' as const,
+    title: 'Concept-first teaching',
+    text: 'Teachers begin with clear explanations and real-life examples before moving to textbook exercises, so that understanding comes before memorisation.',
+  },
+  {
+    icon: 'users' as const,
+    title: 'Small-step practice',
+    text: 'Lessons are broken into manageable steps with frequent practice, revision and gentle correction — especially important in the early years.',
+  },
+  {
+    icon: 'sparkles' as const,
+    title: 'Activity-rich classrooms',
+    text: 'Stories, flash cards, charts, models, group work and outdoor observation keep young learners engaged and attentive.',
+  },
+  {
+    icon: 'eye' as const,
+    title: 'Continuous assessment',
+    text: 'Teachers observe class work, oral answers, projects and written work continuously to understand each child’s progress — rather than relying on a single exam.',
+  },
+];
+---
+
+<BaseLayout
+  title="Academics"
+  description={`Academics at ${school.name} — our teaching approach, learning methodology, subjects and academic activities for young learners.`}
+>
+  <Hero
+    title="Academics"
+    subtitle="A calm, structured approach to teaching that puts understanding first."
+    image={images.classroomColorful}
+    imageAlt="A colourful classroom with young learners (illustrative stock photograph)"
+    breadcrumbs={[{ label: 'Academics' }]}
+  />
+
+  <section class="section bg-white">
+    <div class="container-site">
+      <SampleNote
+        text="this page describes our general teaching approach. It does not claim any specific curriculum or board affiliation — that information will be published only after official confirmation. See School Information."
+      />
+
+      <div class="mt-10 grid gap-10 lg:grid-cols-[1fr_380px]">
+        <div class="prose-school">
+          <h2>Our teaching approach</h2>
+          <p>
+            Good teaching at the primary level is simple to describe and demanding to do well:
+            know the child, explain clearly, practise patiently and review often. Our teachers
+            plan lessons that move step by step — from concrete examples to written practice —
+            so that no child is left behind and no child is held back.
+          </p>
+          <p>
+            Classrooms are lively but orderly. Children are encouraged to ask questions, answer
+            aloud, work together and help one another. Mistakes are treated as a natural part of
+            learning, and effort is recognised as warmly as achievement.
+          </p>
+
+          <h2>Learning methodology</h2>
+          <p>Lessons typically follow a rhythm that young learners can rely on:</p>
+          <ul>
+            <li><strong>Recall</strong> — a quick revision of the previous lesson.</li>
+            <li><strong>Introduce</strong> — the new concept, explained with examples and aids.</li>
+            <li><strong>Practise</strong> — guided class work, then individual practice.</li>
+            <li><strong>Apply</strong> — a short activity, project or real-life connection.</li>
+            <li><strong>Review</strong> — oral revision and periodic assessment to reinforce learning.</li>
+          </ul>
+        </div>
+
+        <aside class="space-y-5">
+          <img
+            src={images.books.src}
+            alt="Open books stacked on a table (illustrative stock photograph)"
+            width={images.books.width}
+            height={images.books.height}
+            loading="lazy"
+            decoding="async"
+            class="aspect-[4/3] w-full rounded-2xl object-cover shadow-md"
+          />
+          <div class="rounded-2xl border border-slate-200 bg-cream p-6">
+            <h2 class="mb-3 text-lg font-bold text-navy-800">A note for parents</h2>
+            <p class="text-sm leading-relaxed text-slate-600">
+              A daily reading habit at home — even ten minutes of shared story time — is one of
+              the strongest supports a parent can give a young learner. Regular school attendance
+              and a fixed homework routine also make a visible difference over the year.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container-site">
+      <SectionHeading
+        align="center"
+        eyebrow="What children learn"
+        title="Subjects & learning areas"
+        subtitle="An example overview of the subjects typically covered in an Indian primary school. Confirm the school's actual subject list with the office."
+      />
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {subjects.map((s) => <FeatureCard icon={s.icon} title={s.title} text={s.text} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-site">
+      <SectionHeading
+        eyebrow="How we teach"
+        title="Our learning methodology"
+        subtitle="Four principles that guide classroom teaching across all classes."
+      />
+      <div class="grid gap-6 sm:grid-cols-2">
+        {approach.map((a) => <FeatureCard icon={a.icon} title={a.title} text={a.text} tone="green" />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-navy-800 text-white">
+    <div class="container-site grid gap-8 sm:grid-cols-3">
+      <div>
+        <h2 class="text-xl font-bold text-white">Academic activities</h2>
+        <p class="mt-2 text-sm leading-relaxed text-navy-100">
+          Beyond daily lessons, schools typically organise activities that make learning visible
+          and enjoyable. Examples include:
+        </p>
+      </div>
+      <ul class="space-y-2 text-sm text-navy-100 sm:col-span-2">
+        <li class="flex gap-2"><span class="text-gold-400">•</span> Weekly class tests and revision sessions</li>
+        <li class="flex gap-2"><span class="text-gold-400">•</span> Reading and recitation periods</li>
+        <li class="flex gap-2"><span class="text-gold-400">•</span> Project work and wall-magazine displays</li>
+        <li class="flex gap-2"><span class="text-gold-400">•</span> Science exhibitions and working models</li>
+        <li class="flex gap-2"><span class="text-gold-400">•</span> Storytelling, declamation and quiz competitions</li>
+        <li class="flex gap-2"><span class="text-gold-400">•</span> Parent–teacher meetings to discuss progress</li>
+        <li class="flex gap-2"><span class="text-gold-400">•</span> <span class="placeholder-text text-[11px]">Confirm actual activities run by the school</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <CTASection
+    title="Looking for class-wise information?"
+    text="See how learning is organised for different age groups, from pre-primary to upper primary."
+    primary={{ label: 'Classes & Learning', href: '/classes' }}
+    secondary={{ label: 'School Information', href: '/school-information' }}
+  />
+
+  <p class="sr-only">{school.name} academics page.</p>
+</BaseLayout>

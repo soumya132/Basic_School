@@ -1,0 +1,125 @@
+---
+/**
+ * Site footer: school identity, quick links, page links and contact block.
+ */
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import type { IconName } from '../types';
+import { school, navGroups } from '../data/school';
+
+const year = new Date().getFullYear();
+
+const quickLinks = [
+  { label: 'Notices', href: '/notices' },
+  { label: 'Events', href: '/events' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'Contact Us', href: '/contact' },
+];
+
+const infoLinks = [
+  { label: "Principal's Message", href: '/principal-message' },
+  { label: 'Vision & Mission', href: '/vision-mission' },
+  { label: 'School Information', href: '/school-information' },
+  { label: 'Facilities', href: '/facilities' },
+];
+
+const contactItems: { icon: IconName; text: string; href?: string }[] = [
+  { icon: 'map-pin', text: `${school.address.line1}, ${school.address.line2}, ${school.address.city} ${school.address.pincode}` },
+  { icon: 'phone', text: school.phone },
+  { icon: 'mail', text: school.email },
+  { icon: 'clock', text: `${school.officeDays} · ${school.officeHours}` },
+];
+
+const isPlaceholder = (t: string) => t.includes('[');
+---
+
+<footer class="mt-auto bg-navy-900 text-navy-100">
+  <div class="container-site grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
+    <!-- Identity -->
+    <div class="sm:col-span-2 lg:col-span-1">
+      <Logo variant="light" size={40} />
+      <p class="mt-4 max-w-xs text-sm leading-relaxed text-navy-200">
+        {school.tagline}. This website shares general information about the school for
+        parents and the local community.
+      </p>
+    </div>
+
+    <!-- Quick links -->
+    <nav aria-label="Quick links">
+      <h2 class="mb-4 text-sm font-bold tracking-wider text-gold-200 uppercase">Quick Links</h2>
+      <ul class="space-y-2 text-sm">
+        {
+          quickLinks.map((l) => (
+            <li>
+              <a href={l.href} class="text-navy-100 hover:text-gold-200 hover:underline">
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+        {
+          navGroups
+            .filter((g) => g.children)
+            .flatMap((g) => g.children ?? [])
+            .slice(0, 4)
+            .map((l) => (
+              <li>
+                <a href={l.href} class="text-navy-100 hover:text-gold-200 hover:underline">
+                  {l.label}
+                </a>
+              </li>
+            ))
+        }
+      </ul>
+    </nav>
+
+    <!-- Information -->
+    <nav aria-label="About the school">
+      <h2 class="mb-4 text-sm font-bold tracking-wider text-gold-200 uppercase">Information</h2>
+      <ul class="space-y-2 text-sm">
+        {
+          infoLinks.map((l) => (
+            <li>
+              <a href={l.href} class="text-navy-100 hover:text-gold-200 hover:underline">
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <!-- Contact -->
+    <div>
+      <h2 class="mb-4 text-sm font-bold tracking-wider text-gold-200 uppercase">Contact</h2>
+      <ul class="space-y-3 text-sm">
+        {
+          contactItems.map((item) => (
+            <li class="flex items-start gap-2.5">
+              <Icon name={item.icon} size={16} class="mt-0.5 shrink-0 text-gold-400" />
+              {isPlaceholder(item.text) ? (
+                <span class="placeholder-text text-xs">{item.text}</span>
+              ) : (
+                <span>{item.text}</span>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-navy-700">
+    <div
+      class="container-site flex flex-col items-center justify-between gap-2 py-5 text-xs text-navy-300 sm:flex-row"
+    >
+      <p>
+        © {year} {school.name}. All rights reserved.
+      </p>
+      <p>
+        <span class="text-gold-200">Note:</span> contact details shown in
+        <span class="placeholder-text">[brackets]</span> are placeholders pending verification.
+      </p>
+    </div>
+  </div>
+</footer>

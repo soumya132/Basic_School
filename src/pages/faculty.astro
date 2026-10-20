@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CTASection from '../components/CTASection.astro';
+import SampleNote from '../components/SampleNote.astro';
+import Icon from '../components/Icon.astro';
+import { images } from '../data/gallery';
+import { facultyMembers, supportRoles } from '../data/faculty';
+import { school } from '../data/school';
+---
+
+<BaseLayout
+  title="Faculty & Staff"
+  description={`Meet the teachers and staff of ${school.name} — the caring people who make everyday learning possible. Placeholder profiles await verified details.`}
+>
+  <Hero
+    title="Faculty & Staff"
+    subtitle="The caring people behind every classroom, corridor and celebration."
+    image={images.teacherStudents}
+    imageAlt="A teacher guiding students in class (illustrative stock photograph)"
+    breadcrumbs={[{ label: 'Faculty & Staff' }]}
+  />
+
+  <section class="section bg-white">
+    <div class="container-site">
+      <SampleNote
+        text="the profiles below are PLACEHOLDERS so the page layout can be previewed. They are not real staff members. Replace each entry with verified names, photographs, qualifications and introductions supplied by the school."
+      />
+
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          facultyMembers.map((member) => (
+            <article class="flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 text-center shadow-sm transition-shadow hover:shadow-md">
+              <!-- Placeholder avatar -->
+              <div class="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full border-2 border-dashed border-navy-200 bg-cream">
+                <Icon name="users" size={30} class="text-navy-300" />
+              </div>
+              <h2 class="text-base font-bold text-navy-800">{member.name}</h2>
+              <p class="mt-0.5 text-sm font-semibold text-leaf-700">{member.role}</p>
+              <p class="mt-1 text-xs text-slate-500">{member.subject}</p>
+              <p class="placeholder-text mt-2 inline-block self-center text-[11px]">
+                {member.qualification}
+              </p>
+              <p class="mt-3 flex-1 text-xs leading-relaxed text-slate-600">{member.bio}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container-site grid gap-10 lg:grid-cols-[1fr_380px]">
+      <div>
+        <SectionHeading
+          eyebrow="The whole team"
+          title="Supporting every school day"
+          subtitle="A school runs on the work of many people — teachers, office staff, librarians, coaches, attendants and more."
+        />
+        <div class="grid gap-5 sm:grid-cols-3">
+          {
+            supportRoles.map((r) => (
+              <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                <h3 class="mb-1.5 text-base font-bold text-navy-800">{r.role}</h3>
+                <p class="text-sm leading-relaxed text-slate-600">{r.description}</p>
+              </div>
+            ))
+          }
+        </div>
+
+        <h2 class="mt-12 mb-4 text-xl font-bold text-navy-800">Join our team</h2>
+        <p class="max-w-2xl leading-relaxed text-slate-600">
+          Interested in teaching or working at {school.name}? Please contact the school office
+          to share your introduction and qualifications.
+          <span class="placeholder-text ml-1 text-[11px]">[Add recruitment policy / contact details when ready]</span>
+        </p>
+      </div>
+
+      <aside>
+        <img
+          src={images.assembly.src}
+          alt="School gathering in an assembly hall (illustrative stock photograph)"
+          width={images.assembly.width}
+          height={images.assembly.height}
+          loading="lazy"
+          decoding="async"
+          class="aspect-[4/5] w-full rounded-2xl object-cover shadow-lg"
+        />
+        <div class="mt-5 rounded-2xl bg-navy-800 p-6 text-white">
+          <h2 class="text-lg font-bold text-white">Principal</h2>
+          <p class="placeholder-text mt-2 inline-block text-xs">{school.principalName}</p>
+          <p class="mt-2 text-sm text-navy-100">{school.principalTitle}</p>
+          <a
+            href="/principal-message"
+            class="mt-4 inline-block text-sm font-bold text-gold-200 hover:underline"
+          >
+            Read the principal's message →
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <CTASection
+    title="Want to meet our teachers?"
+    text="Visit the school or contact the office — we are happy to help parents connect with class teachers."
+    primary={{ label: 'Contact Us', href: '/contact' }}
+    secondary={{ label: 'About the School', href: '/about' }}
+  />
+
+  <p class="sr-only">{school.name} faculty and staff page.</p>
+</BaseLayout>

@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import CTASection from '../components/CTASection.astro';
+import SampleNote from '../components/SampleNote.astro';
+import { images } from '../data/gallery';
+import { school } from '../data/school';
+---
+
+<BaseLayout
+  title="About Us"
+  description={`Learn about ${school.name} — its approach to early and primary education, caring environment and the values that shape everyday school life.`}
+>
+  <Hero
+    title="About Us"
+    subtitle="An introduction to our school, our approach to learning and the values we live by every day."
+    image={images.schoolCorridor}
+    imageAlt="Bright school corridor (illustrative stock photograph)"
+    breadcrumbs={[{ label: 'About Us' }]}
+  />
+
+  <section class="section bg-white">
+    <div class="container-site grid gap-10 lg:grid-cols-[1fr_360px]">
+      <div class="prose-school">
+        <h2>Who we are</h2>
+        <p>
+          <strong>{school.name}</strong> is a school dedicated to the learning and well-being of
+          young children. This website has been created so that parents, guardians and community
+          members can easily find general information about the school — our approach to
+          teaching, the facilities we offer, the activities children enjoy, and how to reach
+          the school office.
+        </p>
+        <p>
+          Every school has its own history, character and community. Ours is built on the simple
+          belief that children learn best when they feel safe, welcomed and genuinely cared for.
+          Alongside strong classroom teaching, we give importance to good habits, kindness
+          towards others and the joy of discovering something new each day.
+        </p>
+
+        <SampleNote
+          text="the paragraphs above are editable sample copy. Replace them with a verified description of the school's history, location and character once confirmed by the school management."
+        />
+
+        <h2>Our educational philosophy</h2>
+        <p>
+          We believe education is not only about textbooks and examinations. It is about
+          nurturing curiosity, building confidence and helping every child discover their own
+          strengths. Young learners need time to play, ask questions freely, make mistakes
+          safely and try again — and our teaching approach is planned around these needs.
+        </p>
+        <ul>
+          <li>
+            <strong>Foundations first:</strong> strong basics in language and number work during
+            the early years, taught with patience and practice.
+          </li>
+          <li>
+            <strong>Learning by doing:</strong> activities, projects and hands-on experiences
+            that bring subjects to life.
+          </li>
+          <li>
+            <strong>Whole-child development:</strong> equal importance to art, music, sports and
+            values alongside academics.
+          </li>
+          <li>
+            <strong>Happy classrooms:</strong> a warm, encouraging atmosphere where children are
+            comfortable participating and asking for help.
+          </li>
+        </ul>
+
+        <h2>Values that guide us</h2>
+        <p>
+          The everyday life of a school is shaped by small, consistent values. These are the
+          qualities we encourage in our learners and staff alike:
+        </p>
+        <ul>
+          <li><strong>Respect</strong> — for teachers, classmates, elders and oneself.</li>
+          <li><strong>Honesty</strong> — in words, work and conduct.</li>
+          <li><strong>Responsibility</strong> — caring for books, classrooms and each other.</li>
+          <li><strong>Kindness</strong> — helping others and including everyone in play.</li>
+          <li><strong>Perseverance</strong> — trying again when something feels difficult.</li>
+        </ul>
+      </div>
+
+      <aside class="space-y-6">
+        <img
+          src={images.teacherStudents.src}
+          alt="A teacher guiding young students in class (illustrative stock photograph)"
+          width={images.teacherStudents.width}
+          height={images.teacherStudents.height}
+          loading="lazy"
+          decoding="async"
+          class="aspect-[4/5] w-full rounded-2xl object-cover shadow-lg"
+        />
+        <div class="rounded-2xl border border-slate-200 bg-cream p-6">
+          <h2 class="mb-3 text-lg font-bold text-navy-800">School details at a glance</h2>
+          <dl class="space-y-3 text-sm">
+            <div>
+              <dt class="font-semibold text-slate-500">Established</dt>
+              <dd class="placeholder-text mt-0.5 inline-block text-xs">{school.establishedYear}</dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-slate-500">Board affiliation</dt>
+              <dd class="placeholder-text mt-0.5 inline-block text-xs">{school.affiliation}</dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-slate-500">Principal</dt>
+              <dd class="placeholder-text mt-0.5 inline-block text-xs">{school.principalName}</dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-slate-500">Office hours</dt>
+              <dd class="placeholder-text mt-0.5 inline-block text-xs">{school.officeHours}</dd>
+            </div>
+          </dl>
+          <a
+            href="/school-information"
+            class="mt-5 inline-block text-sm font-bold text-leaf-700 hover:underline"
+          >
+            Full school information →
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container-site">
+      <SectionHeading
+        align="center"
+        title="What matters most to us"
+        subtitle="Four commitments that shape how we plan every school day."
+      />
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <FeatureCard
+          icon="shield"
+          title="Safety first"
+          text="A safe, supervised and hygienic campus where children can learn without worry."
+          tone="navy"
+        />
+        <FeatureCard
+          icon="heart"
+          title="Care & warmth"
+          text="Teachers who know each child by name, notice their progress and encourage them personally."
+          tone="green"
+        />
+        <FeatureCard
+          icon="book"
+          title="Joy of learning"
+          text="Lessons designed to spark curiosity — through stories, experiments, art and conversation."
+          tone="gold"
+        />
+        <FeatureCard
+          icon="users"
+          title="Family partnership"
+          text="Open communication with parents so that home and school work together for every child."
+          tone="navy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>

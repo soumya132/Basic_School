@@ -1,0 +1,26 @@
+{
+  "name": "saraswati-sisu-vidya-mandir-website",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static informational website for Saraswati Sisu Vidya Mandir",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.4.1",
+    "astro": "^5.13.5",
+    "sharp": "^0.34.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@tailwindcss/vite": "^4.1.13",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.2"
+  }
+}

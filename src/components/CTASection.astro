@@ -1,0 +1,37 @@
+---
+/** Call-to-action band used near the bottom of several pages. */
+interface Props {
+  title?: string;
+  text?: string;
+  primary?: { label: string; href: string };
+  secondary?: { label: string; href: string };
+}
+
+const {
+  title = 'Want to know more about our school?',
+  text = 'Browse our information pages, or get in touch with the school office for enquiries.',
+  primary = { label: 'Contact the School', href: '/contact' },
+  secondary = { label: 'View School Information', href: '/school-information' },
+} = Astro.props;
+---
+
+<section class="bg-leaf-700 text-white">
+  <div class="container-site flex flex-col items-start justify-between gap-6 py-12 sm:flex-row sm:items-center">
+    <div class="max-w-xl">
+      <h2 class="text-2xl font-bold text-white sm:text-3xl">{title}</h2>
+      <p class="mt-2 text-leaf-50">{text}</p>
+    </div>
+    <div class="flex shrink-0 flex-wrap gap-3">
+      <a
+        href={primary.href}
+        class="rounded-md bg-white px-5 py-3 text-sm font-bold text-leaf-800 shadow transition-colors hover:bg-gold-100"
+        >{primary.label}</a
+      >
+      <a
+        href={secondary.href}
+        class="rounded-md border-2 border-white/70 px-5 py-3 text-sm font-bold text-white transition-colors hover:border-white hover:bg-white/10"
+        >{secondary.label}</a
+      >
+    </div>
+  </div>
+</section>

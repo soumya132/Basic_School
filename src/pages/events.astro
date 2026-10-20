@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import EventCard from '../components/EventCard.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CTASection from '../components/CTASection.astro';
+import SampleNote from '../components/SampleNote.astro';
+import { images } from '../data/gallery';
+import { events } from '../data/events';
+import { school } from '../data/school';
+---
+
+<BaseLayout
+  title="Events & Celebrations"
+  description={`Events and celebrations at ${school.name} — annual day, cultural programmes, sports day and community gatherings.`}
+>
+  <Hero
+    title="Events & Celebrations"
+    subtitle="The moments when the whole school comes together — on stage, on the field and in celebration."
+    image={images.culturalDance}
+    imageAlt="Cultural dance performance on stage (illustrative stock photograph)"
+    breadcrumbs={[{ label: 'Events & Celebrations' }]}
+  />
+
+  <section class="section bg-white">
+    <div class="container-site">
+      <SampleNote
+        text="all events listed below are ILLUSTRATIVE EXAMPLES showing how this page will look. They are not confirmed calendar entries. Replace them with verified dates and details from the school office."
+      />
+
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {events.map((event) => <EventCard event={event} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container-site grid gap-10 lg:grid-cols-2">
+      <div class="prose-school">
+        <SectionHeading
+          eyebrow="Traditions"
+          title="Celebrations that build belonging"
+        />
+        <p>
+          Shared celebrations give children memories that last far beyond their school years.
+          Whether it is the flag hoisting on a national day, the colour and music of a seasonal
+          festival, or the excitement of annual day, these occasions teach children to
+          collaborate, perform and take pride in their school community.
+        </p>
+        <p>
+          Events are also a window into school life for families — a chance to see children
+          perform, meet teachers and be part of the community. Photographs from school events
+          can be added to the gallery as they become available.
+        </p>
+        <a
+          href="/gallery"
+          class="inline-flex items-center gap-1.5 text-sm font-bold text-leaf-700 hover:underline"
+        >
+          Browse the photo gallery →
+        </a>
+      </div>
+      <div>
+        <h2 class="mb-4 text-xl font-bold text-navy-800">Planning an event at school?</h2>
+        <ul class="space-y-3">
+          {
+            [
+              'Share your suggestion with the class teacher or school office well in advance.',
+              'Events involving children need prior permission and adequate supervision.',
+              'Photography and videography follow the school’s consent policy. [Add policy link when available]',
+              'Parent volunteers are welcome — please coordinate through the office.',
+            ].map((tip) => (
+              <li class="flex items-start gap-3 rounded-lg border border-slate-200 bg-white p-4 text-sm text-slate-600 shadow-sm">
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-leaf-100 text-[11px] font-bold text-leaf-700">
+                  ✓
+                </span>
+                {tip}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Stay updated on school events"
+    text="Notices about upcoming events are published on the notices page and shared with parents."
+    primary={{ label: 'View Notices', href: '/notices' }}
+    secondary={{ label: 'Contact Us', href: '/contact' }}
+  />
+
+  <p class="sr-only">{school.name} events and celebrations page.</p>
+</BaseLayout>

@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import CTASection from '../components/CTASection.astro';
+import SampleNote from '../components/SampleNote.astro';
+import { images } from '../data/gallery';
+import { school } from '../data/school';
+
+const sports = [
+  { icon: 'trophy' as const, title: 'Athletics & races', text: 'Sprints, long-distance runs, relay races and March-past build fitness and team spirit.' },
+  { icon: 'users' as const, title: 'Team games', text: 'Games like kho-kho, kabaddi, cricket and football teach cooperation and fair play. [Confirm games offered]' },
+  { icon: 'target' as const, title: 'Target games', text: 'Throwing, aiming and coordination games suitable for younger children.' },
+  { icon: 'heart' as const, title: 'Yoga & exercise', text: 'Simple stretching, exercise and yoga routines support posture, focus and calm.' },
+];
+
+const arts = [
+  { icon: 'palette' as const, title: 'Visual arts', text: 'Drawing, painting, colouring, collage and craft work develop imagination and fine motor skills.' },
+  { icon: 'music' as const, title: 'Music', text: 'Singing, rhymes, rhythm work and simple instruments give children a joyful outlet.' },
+  { icon: 'sparkles' as const, title: 'Drama & stage', text: 'Short plays, skits and anchoring practice build confidence in speaking before an audience.' },
+  { icon: 'book' as const, title: 'Literary activities', text: 'Storytelling, recitation, declamation and creative writing nurture expression in languages.' },
+];
+---
+
+<BaseLayout
+  title="Sports & Activities"
+  description={`Sports, arts, cultural activities and extracurricular learning at ${school.name} — helping children grow beyond the classroom.`}
+>
+  <Hero
+    title="Sports & Activities"
+    subtitle="Games, arts and cultural activities that help every child grow beyond the classroom."
+    image={images.sportsKids}
+    imageAlt="Children playing outdoors on a sports field (illustrative stock photograph)"
+    breadcrumbs={[{ label: 'Sports & Activities' }]}
+  />
+
+  <section class="section bg-white">
+    <div class="container-site">
+      <SampleNote
+        text="sports and activities listed here are illustrative examples commonly offered in schools. Confirm the actual programmes, coaches and schedules with the school before treating them as official information."
+      />
+
+      <div class="mt-10 grid gap-10 lg:grid-cols-2">
+        <div>
+          <SectionHeading eyebrow="Sports" title="Games that build body & character" />
+          <div class="grid gap-5 sm:grid-cols-2">
+            {sports.map((s) => <FeatureCard icon={s.icon} title={s.title} text={s.text} />)}
+          </div>
+        </div>
+        <div>
+          <SectionHeading eyebrow="Arts & culture" title="Express, create, perform" />
+          <div class="grid gap-5 sm:grid-cols-2">
+            {arts.map((a) => <FeatureCard icon={a.icon} title={a.title} text={a.text} tone="green" />)}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container-site grid items-center gap-10 lg:grid-cols-2">
+      <div>
+        <SectionHeading
+          eyebrow="Why it matters"
+          title="Beyond books and marks"
+          subtitle="Extracurricular learning is not a break from education — it is part of it."
+        />
+        <div class="prose-school">
+          <p>
+            A child who recites a poem on stage learns confidence. A child who runs a relay
+            learns teamwork. A child who paints learns patience and observation. These
+            experiences shape character as powerfully as any textbook chapter.
+          </p>
+          <p>
+            Schools typically give children opportunities to try many activities before
+            specialising in a few — so that every learner, not only the most confident or
+            athletic, finds something they enjoy and can be proud of.
+          </p>
+          <ul>
+            <li>House activities and inter-house competitions</li>
+            <li>Annual sports day with races and team events</li>
+            <li>Cultural programmes on national and seasonal festivals</li>
+            <li>Club activities such as art, reading, science and gardening</li>
+            <li><span class="placeholder-text text-[11px]">Confirm the actual clubs and houses run by the school</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <img
+          src={images.culturalDance.src}
+          alt="Cultural dance performance on stage (illustrative stock photograph)"
+          width={images.culturalDance.width}
+          height={images.culturalDance.height}
+          loading="lazy"
+          decoding="async"
+          class="aspect-[3/4] w-full rounded-xl object-cover shadow-md"
+        />
+        <img
+          src={images.artCraft.src}
+          alt="Children doing an art and craft activity (illustrative stock photograph)"
+          width={images.artCraft.width}
+          height={images.artCraft.height}
+          loading="lazy"
+          decoding="async"
+          class="mt-8 aspect-[3/4] w-full rounded-xl object-cover shadow-md"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-navy-800 text-white">
+    <div class="container-site">
+      <SectionHeading
+        align="center"
+        eyebrow="Illustrative calendar"
+        title="A year of shared celebrations"
+        subtitle="Example events that bring the whole school together across the year."
+      />
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          [
+            { season: 'Summer', item: 'Admissions open, summer activity programme' },
+            { season: 'Monsoon', item: 'Independence Day, Rakhi & nature activities' },
+            { season: 'Autumn', item: 'Festive cultural week, art exhibitions' },
+            { season: 'Winter', item: 'Sports day, annual day, prize distribution' },
+          ].map((s) => (
+            <div class="rounded-xl bg-navy-700 p-6">
+              <p class="text-xs font-bold tracking-widest text-gold-200 uppercase">{s.season}</p>
+              <p class="mt-2 text-sm leading-relaxed text-navy-100">{s.item}</p>
+              <p class="mt-3 text-[11px] text-navy-300">Illustrative — confirm the school calendar.</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="See school life in pictures"
+    text="Browse photographs from campus, classrooms, activities and celebrations."
+    primary={{ label: 'Open Gallery', href: '/gallery' }}
+    secondary={{ label: 'Events & Celebrations', href: '/events' }}
+  />
+
+  <p class="sr-only">{school.name} sports and activities page.</p>
+</BaseLayout>

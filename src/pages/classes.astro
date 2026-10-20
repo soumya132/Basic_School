@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CTASection from '../components/CTASection.astro';
+import SampleNote from '../components/SampleNote.astro';
+import Icon from '../components/Icon.astro';
+import { images } from '../data/gallery';
+import { classLevels } from '../data/classes';
+import { school } from '../data/school';
+
+const dailyRhythm = [
+  { time: '[Add time]', label: 'Morning assembly', detail: 'Prayer, news, thought of the day and announcements.' },
+  { time: '[Add time]', label: 'First session', detail: 'Core subjects — languages and mathematics while minds are fresh.' },
+  { time: '[Add time]', label: 'Break', detail: 'Snack, water and free play in a supervised area.' },
+  { time: '[Add time]', label: 'Second session', detail: 'EVS / science, art, music or physical education.' },
+  { time: '[Add time]', label: 'Story & wind-down', detail: 'Reading, recitation and preparation for the day’s end.' },
+  { time: '[Add time]', label: 'Dispersal', detail: '[Confirm dispersal time and transport schedule with the office]' },
+];
+---
+
+<BaseLayout
+  title="Classes & Learning"
+  description={`Class structure and age-appropriate learning at ${school.name} — pre-primary, primary and upper-primary learning areas explained for parents.`}
+>
+  <Hero
+    title="Classes & Learning"
+    subtitle="Age-appropriate learning, organised so that every child moves forward with confidence."
+    image={images.heroClassroom}
+    imageAlt="Young students raising their hands in class (illustrative stock photograph)"
+    breadcrumbs={[{ label: 'Classes & Learning' }]}
+  />
+
+  <section class="section bg-white">
+    <div class="container-site">
+      <SampleNote
+        text="class names, age groups and focus areas below are configurable examples. Update them to match the school's actual class structure (e.g. Nursery, LKG, UKG, Classes I–V)."
+      />
+
+      <div class="mt-10 space-y-8">
+        {
+          classLevels.map((level, i) => (
+            <article
+              class:list={[
+                'grid overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm sm:grid-cols-[80px_1fr]',
+                i % 2 === 1 && 'sm:grid-cols-[1fr_80px]',
+              ]}
+            >
+              <div
+                class:list={[
+                  'flex items-center justify-center bg-navy-800 py-4 text-white sm:py-0',
+                  i % 2 === 1 ? 'sm:order-2' : '',
+                ]}
+              >
+                <span class="font-serif text-2xl font-bold text-gold-200 sm:[writing-mode:vertical-rl] sm:rotate-180">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+              </div>
+              <div class="p-6 sm:p-8">
+                <div class="mb-2 flex flex-wrap items-center gap-3">
+                  <h2 class="text-xl font-bold text-navy-800">{level.name}</h2>
+                  <span class="sample-badge">Example</span>
+                </div>
+                <p class="text-sm font-semibold text-leaf-700">{level.ageRange}</p>
+                <p class="mt-3 max-w-2xl leading-relaxed text-slate-600">{level.focus}</p>
+                <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+                  {level.highlights.map((h) => (
+                    <li class="flex items-start gap-2 text-sm text-slate-600">
+                      <Icon name="check-circle" size={16} class="mt-0.5 shrink-0 text-leaf-600" />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container-site grid gap-10 lg:grid-cols-2">
+      <div>
+        <SectionHeading
+          eyebrow="A day at school"
+          title="Daily rhythm"
+          subtitle="A predictable routine helps young children feel secure and ready to learn. Timings below are placeholders."
+        />
+        <ol class="relative space-y-6 border-l-2 border-navy-100 pl-6">
+          {
+            dailyRhythm.map((item) => (
+              <li class="relative">
+                <span class="absolute -left-[31px] top-1 flex h-4 w-4 items-center justify-center rounded-full border-2 border-navy-800 bg-white" />
+                <p class="placeholder-text text-[11px]">{item.time}</p>
+                <h3 class="mt-1 text-base font-bold text-navy-800">{item.label}</h3>
+                <p class="mt-0.5 text-sm text-slate-600">{item.detail}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+      <div>
+        <SectionHeading
+          eyebrow="Partnership"
+          title="Supporting your child at home"
+          subtitle="Small, consistent habits at home make a big difference to school learning."
+        />
+        <div class="space-y-4">
+          {
+            [
+              {
+                icon: 'book' as const,
+                title: 'Read together daily',
+                text: 'Ten minutes of shared reading builds vocabulary, attention and a lifelong love of books.',
+              },
+              {
+                icon: 'clock' as const,
+                title: 'Fix a homework time',
+                text: 'A calm, regular place and time for homework prevents last-minute stress.',
+              },
+              {
+                icon: 'heart' as const,
+                title: 'Talk about the school day',
+                text: 'Ask open questions — "What did you discover today?" — instead of only "How much did you score?"',
+              },
+              {
+                icon: 'shield' as const,
+                title: 'Prioritise attendance',
+                text: 'Regular attendance and punctuality are among the strongest predictors of steady progress.',
+              },
+            ].map((tip) => (
+              <div class="flex gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-leaf-50 text-leaf-700">
+                  <Icon name={tip.icon} size={20} />
+                </span>
+                <div>
+                  <h3 class="text-base font-bold text-navy-800">{tip.title}</h3>
+                  <p class="mt-1 text-sm text-slate-600">{tip.text}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+        <img
+          src={images.kidsPainting.src}
+          alt="Art and craft supplies for school activities (illustrative stock photograph)"
+          width={images.kidsPainting.width}
+          height={images.kidsPainting.height}
+          loading="lazy"
+          decoding="async"
+          class="mt-8 aspect-[16/9] w-full rounded-2xl object-cover shadow-md"
+        />
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Questions about admissions or classes?"
+    text="The school office can share the current class structure, age criteria and session details."
+    primary={{ label: 'Contact the Office', href: '/contact' }}
+    secondary={{ label: 'Academics Overview', href: '/academics' }}
+  />
+
+  <p class="sr-only">{school.name} classes and learning page.</p>
+</BaseLayout>

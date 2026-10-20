@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CTASection from '../components/CTASection.astro';
+import SampleNote from '../components/SampleNote.astro';
+import Icon from '../components/Icon.astro';
+import { images } from '../data/gallery';
+import { facilities } from '../data/facilities';
+import { school } from '../data/school';
+
+const safetyPoints = [
+  {
+    icon: 'shield' as const,
+    title: 'Supervised campuses',
+    text: 'Children should be supervised during classes, breaks and dispersal. [Confirm the school’s safety arrangements]',
+  },
+  {
+    icon: 'droplet' as const,
+    title: 'Clean drinking water',
+    text: 'Safe drinking water is a basic requirement for every school. [Confirm purification arrangements]',
+  },
+  {
+    icon: 'check-circle' as const,
+    title: 'Hygiene & sanitation',
+    text: 'Clean toilets, regular cleaning and hand-washing habits protect young children from illness.',
+  },
+  {
+    icon: 'bus' as const,
+    title: 'Safe transport',
+    text: 'If school transport is available, vehicle condition, drivers and attendants should meet safety norms. [Confirm transport policy]',
+  },
+];
+---
+
+<BaseLayout
+  title="Facilities"
+  description={`School facilities at ${school.name} — classrooms, library, laboratories, playground, drinking water, sanitation and more.`}
+>
+  <Hero
+    title="Facilities"
+    subtitle="The spaces and services that make a school day safe, comfortable and full of learning."
+    image={images.schoolBuilding}
+    imageAlt="School building exterior with lawns (illustrative stock photograph)"
+    breadcrumbs={[{ label: 'Facilities' }]}
+  />
+
+  <section class="section bg-white">
+    <div class="container-site">
+      <SampleNote
+        text="every facility listed below is an EXAMPLE of a common school facility, shown to preview this page. None has been confirmed for this school yet. The school office should confirm each item before this page is published as factual."
+      />
+
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          facilities.map((f) => (
+            <article class="flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
+              <div class="mb-4 flex items-start justify-between">
+                <span class="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-navy-50 text-navy-700">
+                  <Icon name={f.icon} size={24} />
+                </span>
+                <span class="rounded-full border border-gold-200 bg-gold-100 px-2.5 py-0.5 text-[10px] font-bold tracking-wide text-gold-600 uppercase">
+                  To be confirmed
+                </span>
+              </div>
+              <h2 class="mb-2 text-lg font-bold text-navy-800">{f.name}</h2>
+              <p class="text-sm leading-relaxed text-slate-600">{f.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container-site grid items-center gap-10 lg:grid-cols-2">
+      <div class="grid grid-cols-2 gap-4">
+        <img
+          src={images.library.src}
+          alt="Library shelves filled with books (illustrative stock photograph)"
+          width={images.library.width}
+          height={images.library.height}
+          loading="lazy"
+          decoding="async"
+          class="aspect-square w-full rounded-xl object-cover shadow-md"
+        />
+        <img
+          src={images.kidsComputer.src}
+          alt="Children learning on a computer (illustrative stock photograph)"
+          width={images.kidsComputer.width}
+          height={images.kidsComputer.height}
+          loading="lazy"
+          decoding="async"
+          class="mt-8 aspect-square w-full rounded-xl object-cover shadow-md"
+        />
+        <img
+          src={images.playground.src}
+          alt="Children's playground (illustrative stock photograph)"
+          width={images.playground.width}
+          height={images.playground.height}
+          loading="lazy"
+          decoding="async"
+          class="aspect-square w-full rounded-xl object-cover shadow-md"
+        />
+        <img
+          src={images.scienceLab.src}
+          alt="Science laboratory glassware (illustrative stock photograph)"
+          width={images.scienceLab.width}
+          height={images.scienceLab.height}
+          loading="lazy"
+          decoding="async"
+          class="mt-8 aspect-square w-full rounded-xl object-cover shadow-md"
+        />
+      </div>
+      <div>
+        <SectionHeading
+          eyebrow="Health & safety"
+          title="A safe campus comes first"
+          subtitle="Facilities matter most when they keep children safe, healthy and comfortable through the day."
+        />
+        <div class="space-y-4">
+          {
+            safetyPoints.map((p) => (
+              <div class="flex gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-leaf-50 text-leaf-700">
+                  <Icon name={p.icon} size={20} />
+                </span>
+                <div>
+                  <h3 class="text-base font-bold text-navy-800">{p.title}</h3>
+                  <p class="mt-1 text-sm text-slate-600">{p.text}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Want to see the campus?"
+    text="Parents are welcome to contact the school office to learn more about the campus and arrange a visit."
+    primary={{ label: 'Contact Us', href: '/contact' }}
+    secondary={{ label: 'Sports & Activities', href: '/sports-activities' }}
+  />
+
+  <p class="sr-only">{school.name} facilities page.</p>
+</BaseLayout>
