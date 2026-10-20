@@ -10,10 +10,12 @@ export default defineConfig({
   integrations: [sitemap()],
   build: {
     inlineStylesheets: 'auto',
+    format: 'file',
   },
   vite: {
     plugins: [tailwindcss()],
   },
 });
+
 
 
