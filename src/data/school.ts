@@ -57,39 +57,39 @@ export const school = {
 
 /** Navigation structure shared by header + footer. */
 export const navGroups = [
-  { label: 'Home', href: '/' },
+  { label: 'Home', href: '/index.html' },
   {
     label: 'About',
-    href: '/about',
+    href: '/about.html',
     children: [
-      { label: 'About Us', href: '/about' },
-      { label: "Principal's Message", href: '/principal-message' },
-      { label: 'Vision & Mission', href: '/vision-mission' },
-      { label: 'School Information', href: '/school-information' },
+      { label: 'About Us', href: '/about.html' },
+      { label: "Principal's Message", href: '/principal-message.html' },
+      { label: 'Vision & Mission', href: '/vision-mission.html' },
+      { label: 'School Information', href: '/school-information.html' },
     ],
   },
   {
     label: 'Academics',
-    href: '/academics',
+    href: '/academics.html',
     children: [
-      { label: 'Academics', href: '/academics' },
-      { label: 'Classes & Learning', href: '/classes' },
-      { label: 'Facilities', href: '/facilities' },
-      { label: 'Sports & Activities', href: '/sports-activities' },
+      { label: 'Academics', href: '/academics.html' },
+      { label: 'Classes & Learning', href: '/classes.html' },
+      { label: 'Facilities', href: '/facilities.html' },
+      { label: 'Sports & Activities', href: '/sports-activities.html' },
     ],
   },
   {
     label: 'Campus Life',
-    href: '/faculty',
+    href: '/faculty.html',
     children: [
-      { label: 'Faculty & Staff', href: '/faculty' },
-      { label: 'School Gallery', href: '/gallery' },
-      { label: 'Events & Celebrations', href: '/events' },
-      { label: 'Achievements', href: '/achievements' },
+      { label: 'Faculty & Staff', href: '/faculty.html' },
+      { label: 'School Gallery', href: '/gallery.html' },
+      { label: 'Events & Celebrations', href: '/events.html' },
+      { label: 'Achievements', href: '/achievements.html' },
     ],
   },
-  { label: 'Notices', href: '/notices' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Notices', href: '/notices.html' },
+  { label: 'Contact', href: '/contact.html' },
 ] as const;
 
 export type NavItem = {
