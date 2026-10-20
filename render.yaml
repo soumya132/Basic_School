@@ -10,6 +10,51 @@ services:
         value: https://saraswati-sisu-vidya-mandir.onrender.com
     routes:
       - type: rewrite
-        source: /*
+        source: /
         destination: /index.html
+      - type: rewrite
+        source: /about
+        destination: /about.html
+      - type: rewrite
+        source: /principal-message
+        destination: /principal-message.html
+      - type: rewrite
+        source: /vision-mission
+        destination: /vision-mission.html
+      - type: rewrite
+        source: /academics
+        destination: /academics.html
+      - type: rewrite
+        source: /classes
+        destination: /classes.html
+      - type: rewrite
+        source: /facilities
+        destination: /facilities.html
+      - type: rewrite
+        source: /sports-activities
+        destination: /sports-activities.html
+      - type: rewrite
+        source: /faculty
+        destination: /faculty.html
+      - type: rewrite
+        source: /gallery
+        destination: /gallery.html
+      - type: rewrite
+        source: /events
+        destination: /events.html
+      - type: rewrite
+        source: /notices
+        destination: /notices.html
+      - type: rewrite
+        source: /achievements
+        destination: /achievements.html
+      - type: rewrite
+        source: /contact
+        destination: /contact.html
+      - type: rewrite
+        source: /school-information
+        destination: /school-information.html
+      - type: rewrite
+        source: /404
+        destination: /404.html
     autoDeploy: true
