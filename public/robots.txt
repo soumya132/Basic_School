@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://soumya132.onrender.com/sitemap-index.xml
+Sitemap: https://saraswati-sisu-vidya-mandir.onrender.com/sitemap-index.xml

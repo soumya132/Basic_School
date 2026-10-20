@@ -1,13 +1,13 @@
 services:
   - type: web
-    name: soumya132
+    name: Saraswati_Sisu_Vidya_Mandir
     runtime: static
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
     pullRequestPreviewsEnabled: true
     envVars:
       - key: SITE_URL
-        value: https://soumya132.onrender.com
+        value: https://saraswati-sisu-vidya-mandir.onrender.com
     routes:
       - type: rewrite
         source: /*
