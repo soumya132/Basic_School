@@ -8,12 +8,12 @@ import { images } from '../data/gallery';
 import { school } from '../data/school';
 
 const policyLinks = [
-  { label: 'Admissions Policy', file: '[Add document / link]', status: 'To be added' },
-  { label: 'Fee Structure', file: '[Add document / link]', status: 'To be added' },
-  { label: 'School Rules & Discipline Policy', file: '[Add document / link]', status: 'To be added' },
-  { label: 'Anti-Ragging / Child Safety Guidelines', file: '[Add document / link]', status: 'To be added' },
-  { label: 'Transport Policy', file: '[Add document / link]', status: 'To be added' },
-  { label: 'Right to Information / Public Disclosure', file: '[Add document / link]', status: 'To be added' },
+  { label: 'Admissions Policy', file: '[Demo: admissions-policy.pdf]', status: 'Demo' },
+  { label: 'Fee Structure', file: '[Demo: fee-structure.pdf]', status: 'Demo' },
+  { label: 'School Rules & Discipline Policy', file: '[Demo: school-rules.pdf]', status: 'Demo' },
+  { label: 'Anti-Ragging / Child Safety Guidelines', file: '[Demo: child-safety.pdf]', status: 'Demo' },
+  { label: 'Transport Policy', file: '[Demo: transport-policy.pdf]', status: 'Demo' },
+  { label: 'Right to Information / Public Disclosure', file: '[Demo: rti-disclosure.pdf]', status: 'Demo' },
 ];
 ---
 
@@ -47,9 +47,9 @@ const policyLinks = [
                 { label: 'Affiliation / Board', value: school.affiliation },
                 { label: 'Registration / Recognition Number', value: school.registrationNumber },
                 { label: 'Principal', value: `${school.principalName} — ${school.principalTitle}` },
-                { label: 'Medium of Instruction', value: '[Add medium of instruction]' },
-                { label: 'School Type', value: '[Add school type, e.g. Co-educational]' },
-                { label: 'Classes Offered', value: '[Add classes offered, e.g. Pre-Primary to Class V]' },
+                { label: 'Medium of Instruction', value: '[Demo: English]' },
+                { label: 'School Type', value: '[Demo: Co-educational]' },
+                { label: 'Classes Offered', value: '[Demo: Pre-Primary to Class V]' },
               ].map((item) => (
                 <div class="flex flex-col gap-1 sm:flex-row sm:justify-between">
                   <dt class="text-sm font-semibold text-slate-500">{item.label}</dt>

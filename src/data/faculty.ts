@@ -1,6 +1,6 @@
 /**
- * FACULTY PROFILES — PLACEHOLDER RECORDS ONLY.
- * These are editable sample entries so the layout can be previewed.
+ * FACULTY PROFILES — DEMO RECORDS ONLY.
+ * These are editable demo entries so the layout can be previewed.
  * Real staff names, photos and qualifications must be added by the
  * school before publication. Do NOT present these as real people.
  */
@@ -18,74 +18,74 @@ export type FacultyMember = {
 export const facultyMembers: FacultyMember[] = [
   {
     id: 'f-1',
-    name: "[Add teacher's name]",
+    name: '[Demo: Riya Sharma]',
     role: 'Primary Class Teacher',
     subject: 'All subjects (primary classes)',
-    qualification: '[Add qualification]',
-    bio: 'Placeholder profile — replace with a short, verified introduction written by the school.',
+    qualification: '[Demo: B.Ed., M.A. English]',
+    bio: 'Demo profile — a patient primary teacher who enjoys story time and activity-based learning.',
     isPlaceholder: true,
   },
   {
     id: 'f-2',
-    name: "[Add teacher's name]",
+    name: '[Demo: Ananya Mohanty]',
     role: 'Primary Class Teacher',
     subject: 'All subjects (primary classes)',
-    qualification: '[Add qualification]',
-    bio: 'Placeholder profile — replace with a short, verified introduction written by the school.',
+    qualification: '[Demo: B.Ed., B.A.]',
+    bio: 'Demo profile — focuses on strong reading, writing and number habits in the early years.',
     isPlaceholder: true,
   },
   {
     id: 'f-3',
-    name: "[Add teacher's name]",
+    name: '[Demo: Sneha Patnaik]',
     role: 'Language Teacher',
-    subject: '[Add subject, e.g. Hindi / English / regional language]',
-    qualification: '[Add qualification]',
-    bio: 'Placeholder profile — replace with a short, verified introduction written by the school.',
+    subject: '[Demo: Hindi / English]',
+    qualification: '[Demo: M.A. Hindi, B.Ed.]',
+    bio: 'Demo profile — helps children build vocabulary through songs, stories and conversation.',
     isPlaceholder: true,
   },
   {
     id: 'f-4',
-    name: "[Add teacher's name]",
+    name: '[Demo: Rajesh Kumar]',
     role: 'Mathematics Teacher',
     subject: 'Mathematics',
-    qualification: '[Add qualification]',
-    bio: 'Placeholder profile — replace with a short, verified introduction written by the school.',
+    qualification: '[Demo: M.Sc. Mathematics, B.Ed.]',
+    bio: 'Demo profile — uses games and hands-on material to make numbers less intimidating.',
     isPlaceholder: true,
   },
   {
     id: 'f-5',
-    name: "[Add teacher's name]",
+    name: '[Demo: Priya Nayak]',
     role: 'Science Teacher',
     subject: 'Science / Environmental Studies',
-    qualification: '[Add qualification]',
-    bio: 'Placeholder profile — replace with a short, verified introduction written by the school.',
+    qualification: '[Demo: M.Sc. Botany, B.Ed.]',
+    bio: 'Demo profile — encourages observation, questions and simple experiments in class.',
     isPlaceholder: true,
   },
   {
     id: 'f-6',
-    name: "[Add staff member's name]",
+    name: '[Demo: Arjun Behera]',
     role: 'Physical Education Instructor',
     subject: 'Sports & physical education',
-    qualification: '[Add qualification]',
-    bio: 'Placeholder profile — replace with a short, verified introduction written by the school.',
+    qualification: '[Demo: B.P.Ed.]',
+    bio: 'Demo profile — organises safe games, warm-ups and team activities for all ages.',
     isPlaceholder: true,
   },
   {
     id: 'f-7',
-    name: "[Add staff member's name]",
+    name: '[Demo: Meera Das]',
     role: 'Librarian',
     subject: 'Library & reading programme',
-    qualification: '[Add qualification]',
-    bio: 'Placeholder profile — replace with a short, verified introduction written by the school.',
+    qualification: '[Demo: B.Lib.Sc.]',
+    bio: 'Demo profile — keeps the reading corner lively with picture books and story sessions.',
     isPlaceholder: true,
   },
   {
     id: 'f-8',
-    name: "[Add staff member's name]",
+    name: '[Demo: Sunil Rout]',
     role: 'Office Administrator',
     subject: 'School office',
-    qualification: '[Add qualification]',
-    bio: 'Placeholder profile — replace with a short, verified introduction written by the school.',
+    qualification: '[Demo: B.Com.]',
+    bio: 'Demo profile — handles records, enquiries and everyday coordination with families.',
     isPlaceholder: true,
   },
 ];
@@ -104,6 +104,6 @@ export const supportRoles = [
   {
     role: 'Transport Team',
     description:
-      'If school transport is available, trained drivers and attendants assist children boarding and alighting. [Confirm transport facility with the school office]',
+      'If school transport is available, trained drivers and attendants assist children boarding and alighting. [Demo: transport available — confirm with the school office]',
   },
 ];

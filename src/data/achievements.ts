@@ -1,6 +1,6 @@
 /**
- * ACHIEVEMENTS — LAYOUT PREVIEW WITH PLACEHOLDERS.
- * No awards, ranks, medals or examination results have been invented.
+ * ACHIEVEMENTS — LAYOUT PREVIEW WITH DEMO ENTRIES.
+ * Awards and results below are illustrative demo data, not real claims.
  * Add only verified achievements supplied by the school.
  */
 
@@ -24,55 +24,55 @@ export const achievements: Achievement[] = [
   {
     id: 'a-1',
     category: 'Academic',
-    title: '[Add verified academic achievement]',
+    title: '[Demo: Inter-school quiz participation]',
     description:
-      'Placeholder entry — for example: a learner or team recognised in a verified inter-school or board-level activity. Add only after confirmation.',
-    year: '[Add year]',
+      'Demo entry — a team took part in an illustrative inter-school quiz. Replace with a verified achievement.',
+    year: '[Demo: 2025]',
     isPlaceholder: true,
   },
   {
     id: 'a-2',
     category: 'Academic',
-    title: '[Add verified academic achievement]',
+    title: '[Demo: Reading challenge completion]',
     description:
-      'Placeholder entry — describe the achievement, the participants and the organising body accurately.',
-    year: '[Add year]',
+      'Demo entry — learners completed a classroom reading challenge. Replace with a verified programme and result.',
+    year: '[Demo: 2025]',
     isPlaceholder: true,
   },
   {
     id: 'a-3',
     category: 'Sports',
-    title: '[Add verified sports achievement]',
+    title: '[Demo: District sports meet participation]',
     description:
-      'Placeholder entry — for example: participation or placement in a verified district, state or school-level sports meet.',
-    year: '[Add year]',
+      'Demo entry — students participated in an illustrative district-level sports meet. Add the real event details later.',
+    year: '[Demo: 2024]',
     isPlaceholder: true,
   },
   {
     id: 'a-4',
     category: 'Sports',
-    title: '[Add verified sports achievement]',
+    title: '[Demo: Annual sports day team event]',
     description:
-      'Placeholder entry — replace with a confirmed result and the name of the competition.',
-    year: '[Add year]',
+      'Demo entry — a relay team was recognised at a school sports day. Replace with a confirmed result.',
+    year: '[Demo: 2024]',
     isPlaceholder: true,
   },
   {
     id: 'a-5',
     category: 'Cultural',
-    title: '[Add verified cultural achievement]',
+    title: '[Demo: Cultural programme appreciation]',
     description:
-      'Placeholder entry — for example: recognition in a verified art, music, dance or declamation event.',
-    year: '[Add year]',
+      'Demo entry — a group performance received appreciation at an illustrative cultural event.',
+    year: '[Demo: 2025]',
     isPlaceholder: true,
   },
   {
     id: 'a-6',
     category: 'Community',
-    title: '[Add verified community initiative]',
+    title: '[Demo: Plantation drive]',
     description:
-      'Placeholder entry — for example: a cleanliness drive, plantation drive or community programme led by the school.',
-    year: '[Add year]',
+      'Demo entry — students and teachers took part in an illustrative tree-planting activity.',
+    year: '[Demo: 2025]',
     isPlaceholder: true,
   },
 ];

@@ -1,5 +1,5 @@
 /**
- * CLASSES & LEARNING — configurable sample structure.
+ * CLASSES & LEARNING — configurable demo structure.
  * Class names, age ranges and focus areas are illustrative examples of
  * how an Indian primary school may organise classes. Confirm the actual
  * class structure (Nursery, LKG, UKG, Class I–V etc.) with the school.
@@ -58,7 +58,7 @@ export const classLevels: ClassLevel[] = [
     id: 'class-6-and-above',
     name: 'Middle grades (if applicable)',
     ageRange: 'Approx. 11 years and above',
-    focus: '[Confirm whether the school offers middle-school classes and update this section accordingly.]',
+    focus: '[Demo: Subject-wise learning in languages, mathematics, science and social studies — confirm grades offered]',
     highlights: [
       'Subject-wise timetable approach — replace with the school’s actual timetable practice',
       'Laboratory and library-based learning',
