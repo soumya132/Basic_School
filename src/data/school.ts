@@ -8,8 +8,8 @@
  *  real school facts. They must be replaced with verified
  *  information before the website goes live.
  *
- *  Nothing here has been invented — if a fact is unknown it is
- *  either a bracketed placeholder or documented as sample copy.
+ *  Unverified values are demo data in [square brackets] and must
+ *  be replaced with real facts before publishing.
  * ============================================================
  */
 
@@ -19,32 +19,32 @@ export const school = {
   tagline: 'Nurturing young minds with care, values and knowledge',
 
   /**
-   * VERIFIED FACTS go below (currently none supplied).
+   * VERIFIED FACTS go below (city and state supplied).
    * Everything marked PLACEHOLDER must be confirmed by the school.
    */
   address: {
-    line1: '[Add school address line 1]',
-    line2: '[Add school address line 2 — locality]',
-    city: '[Add city]',
-    state: '[Add state]',
-    pincode: '[Add PIN code]',
+    line1: '[Demo: 123 School Road]',
+    line2: '[Demo: Patia locality]',
+    city: 'Bhubaneswar',
+    state: 'Odisha',
+    pincode: '[Demo: 751024]',
     /** Set to true once a real Google Maps embed URL is added below. */
     mapAvailable: false,
     mapEmbedUrl: '',
   },
 
-  phone: '[Add school telephone number]',
-  alternatePhone: '[Add alternate phone, if any]',
-  email: '[Add school email address]',
-  officeHours: '[Add office hours, e.g. Monday–Saturday, 8:00 AM – 2:00 PM]',
-  officeDays: '[Add working days]',
+  phone: '[Demo: 0000000000]',
+  alternatePhone: '[Demo: 0000000001]',
+  email: '[Demo: demo.school@example.com]',
+  officeHours: '[Demo: 8:00 AM – 2:00 PM]',
+  officeDays: '[Demo: Monday–Saturday]',
 
-  /** PLACEHOLDER — do not publish until verified. */
-  establishedYear: '[Add year of establishment]',
-  /** PLACEHOLDER — never claim a board affiliation without proof. */
-  affiliation: '[Add board affiliation once officially confirmed]',
-  registrationNumber: '[Add registration / recognition number once verified]',
-  principalName: "[Add principal's name]",
+  /** DEMO DATA — replace with verified facts before publishing. */
+  establishedYear: '[Demo: 2005]',
+  /** DEMO DATA — never claim a board affiliation without proof. */
+  affiliation: '[Demo: CBSE — confirm with the school]',
+  registrationNumber: '[Demo: REG-000000]',
+  principalName: '[Demo: Principal Name]',
   principalTitle: 'Principal',
 
   /** Optional social links — leave empty strings to hide the icon. */
