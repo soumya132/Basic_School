@@ -33,36 +33,38 @@ function groupActive(item: any): boolean {
         {
           navGroups.map((item) =>
             item.children ? (
-              <li class="nav-dropdown relative">
-                <summary
-                  class:list={[
-                    'flex cursor-pointer list-none items-center gap-1 rounded-md px-3 py-2 text-sm font-semibold select-none',
-                    groupActive(item)
-                      ? 'bg-navy-700 text-gold-200'
-                      : 'text-navy-50 hover:bg-navy-700 hover:text-white',
-                  ]}
-                >
-                  {item.label}
-                  <Icon name="chevron-down" size={14} class="nav-caret transition-transform" />
-                </summary>
-                <ul class="dropdown-panel absolute left-0 top-full z-50 mt-1 w-60 rounded-lg border border-navy-100 bg-white py-2 text-navy-800 shadow-xl">
-                  {
-                    item.children.map((child) => (
-                      <li>
-                        <a
-                          href={child.href}
-                          class:list={[
-                            'block px-4 py-2 text-sm font-medium hover:bg-cream hover:text-leaf-700',
-                            isActive(child.href) && 'bg-cream text-leaf-700',
-                          ]}
-                          aria-current={isActive(child.href) ? 'page' : undefined}
-                        >
-                          {child.label}
-                        </a>
-                      </li>
-                    ))
-                  }
-                </ul>
+              <li>
+                <details class="nav-dropdown relative">
+                  <summary
+                    class:list={[
+                      'flex cursor-pointer list-none items-center gap-1 rounded-md px-3 py-2 text-sm font-semibold select-none',
+                      groupActive(item)
+                        ? 'bg-navy-700 text-gold-200'
+                        : 'text-navy-50 hover:bg-navy-700 hover:text-white',
+                    ]}
+                  >
+                    {item.label}
+                    <Icon name="chevron-down" size={14} class="nav-caret transition-transform" />
+                  </summary>
+                  <ul class="dropdown-panel absolute left-0 top-full z-50 w-60 rounded-lg border border-navy-100 bg-white px-2 pt-3 pb-2 text-navy-800 shadow-xl">
+                    {
+                      item.children.map((child) => (
+                        <li>
+                          <a
+                            href={child.href}
+                            class:list={[
+                              'block px-2 py-2 text-sm font-medium hover:bg-cream hover:text-leaf-700',
+                              isActive(child.href) && 'bg-cream text-leaf-700',
+                            ]}
+                            aria-current={isActive(child.href) ? 'page' : undefined}
+                          >
+                            {child.label}
+                          </a>
+                        </li>
+                      ))
+                    }
+                  </ul>
+                </details>
               </li>
             ) : (
               <li>
@@ -147,12 +149,17 @@ function groupActive(item: any): boolean {
     display: none;
   }
   @media (min-width: 1024px) {
-    .nav-dropdown:hover > .dropdown-panel,
-    .nav-dropdown:focus-within > .dropdown-panel {
-      display: block;
+    .nav-dropdown::details-content {
+      content-visibility: visible;
     }
+    .nav-dropdown:hover > .dropdown-panel,
+    .nav-dropdown:focus-within > .dropdown-panel,
     .nav-dropdown[open] > .dropdown-panel {
       display: block;
+    }
+    .nav-dropdown:hover > summary .nav-caret,
+    .nav-dropdown:focus-within > summary .nav-caret {
+      transform: rotate(180deg);
     }
   }
   .nav-dropdown[open] > summary .menu-icon-open {
